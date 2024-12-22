@@ -53,54 +53,191 @@
 
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
-            <!--  FaceClustering  -->
-            <tr onmouseout="faceclustering_stop()" onmouseover="faceclustering_start()" bgcolor="#ffffd0">
+            <!--  TrendAware  -->
+            <tr onmouseout="trendaware_stop()" onmouseover="trendaware_start()" bgcolor="#ffffd0">
               <td style="padding:20px;width:25%;vertical-align:middle">
                 <div class="one">
-                  <div class="two" id='faceclustering_image'><video  width=100% muted autoplay loop>
-                  <source src="images/faceclustering.mp4" type="video/mp4">
+                  <div class="two" id='trendaware_image'><video  width=100% muted autoplay loop>
+                  <source src="images/trendaware_overview.png" type="video/mp4">
                   Your browser does not support the video tag.
                   </video></div>
-                  <img src='images/faceclustering.png' width=100%>
+                  <img src='images/trendaware_overview.png' width=100%>
                 </div>
                 <script type="text/javascript">
-                  function faceclustering_start() {
-                    document.getElementById('faceclustering_image').style.opacity = "1";
+                  function trendaware_start() {
+                    document.getElementById('trendaware_image').style.opacity = "1";
                   }
         
-                  function faceclustering_stop() {
-                    document.getElementById('faceclustering_image').style.opacity = "0";
+                  function trendaware_stop() {
+                    document.getElementById('trendaware_image').style.opacity = "0";
                   }
-                  faceclustering_stop()
+                  trendaware_stop()
                 </script>
               </td>
               <td style="padding:20px;width:75%;vertical-align:middle">
-                <a href="https://arxiv.org/pdf/2207.11895.pdf">
-                  <span class="papertitle">On Mitigating Hard Clusters for Face Clustering</span>
+                <a href="https://ojs.aaai.org/index.php/AAAI/article/view/27803">
+                  <span class="papertitle">Trend-Aware Supervision: On Learning Invariance for Semi-supervised Facial Action Unit Intensity Estimation</span>
                 </a>
                 <br>
                 <strong>Yingjie Chen*</strong>,
-                Huasong Zhong*,
-                Chong Chen,
-                Chen Shen,
-                Jianqiang Huang,
+                Jiarui Zhang*,
                 Tao Wang,
-                Yun Liang,
-                Qianru Sun
+                Yun Liang
                 <br>
-                <em>ECCV, 2022</em> <font color="red"><strong> &nbsp (Oral Presentation, Top 2.3%)</strong></font>
+                <em>ECCV, 2022</em>
 
                 <br>
-                <a href="https://arxiv.org/pdf/2207.11895.pdf">arXiv</a>
+                <a href="https://ojs.aaai.org/index.php/AAAI/article/view/27803">arXiv</a>
                 /
-                <a href="https://github.com/echoanran/On-Mitigating-Hard-Clusters">code</a>
+                <a href="https://github.com/echoanran/Trend_Aware_Supervision">code</a>
                 <p></p>
                 <p>
-                We inspect face clustering problem and find existing methods failed to identify hard clusters—yielding significantly low recall for small or sparse clusters. To mitigate the issue of small clusters, we introduce NDDe based on the diffusion of neighborhood densities.
+                We inspect the keyframe-based semi-supervised AU intensity estimation problem and identify the spurious correlation problem as the main challenge. To this end, we propose Trend-Aware Supervision to raise intra-trend and inter-trend awareness during training to learn invariant AU-specifc features.
                 </p>
               </td>
             </tr>
           </tbody></table>
+
+          <!--  FaceClustering  -->
+          <tr onmouseout="faceclustering_stop()" onmouseover="faceclustering_start()" bgcolor="#ffffd0">
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <div class="one">
+                <div class="two" id='faceclustering_image'><video  width=100% muted autoplay loop>
+                <source src="images/faceclustering_overview.png" type="video/mp4">
+                Your browser does not support the video tag.
+                </video></div>
+                <img src='images/faceclustering_overview.png' width=100%>
+              </div>
+              <script type="text/javascript">
+                function faceclustering_start() {
+                  document.getElementById('faceclustering_image').style.opacity = "1";
+                }
+      
+                function faceclustering_stop() {
+                  document.getElementById('faceclustering_image').style.opacity = "0";
+                }
+                faceclustering_stop()
+              </script>
+            </td>
+            <td style="padding:20px;width:75%;vertical-align:middle">
+              <a href="https://arxiv.org/pdf/2207.11895.pdf">
+                <span class="papertitle">On Mitigating Hard Clusters for Face Clustering</span>
+              </a>
+              <br>
+              <strong>Yingjie Chen*</strong>,
+              Huasong Zhong*,
+              Chong Chen,
+              Chen Shen,
+              Jianqiang Huang,
+              Tao Wang,
+              Yun Liang,
+              Qianru Sun
+              <br>
+              <em>ECCV, 2022</em> <font color="red"><strong> &nbsp (Oral Presentation, Top 2.3%)</strong></font>
+
+              <br>
+              <a href="https://arxiv.org/pdf/2207.11895.pdf">arXiv</a>
+              /
+              <a href="https://github.com/echoanran/On-Mitigating-Hard-Clusters">code</a>
+              <p></p>
+              <p>
+              We inspect face clustering problem and find existing methods failed to identify hard clusters—yielding significantly low recall for small or sparse clusters. To mitigate the issue of small clusters, we introduce NDDe based on the diffusion of neighborhood densities.
+              </p>
+            </td>
+          </tr>
+        </tbody></table>
+
+        <!--  SupHCL  -->
+        <tr onmouseout="suphcl_stop()" onmouseover="suphcl_start()" bgcolor="#ffffd0">
+          <td style="padding:20px;width:25%;vertical-align:middle">
+            <div class="one">
+              <div class="two" id='suphcl_image'><video  width=100% muted autoplay loop>
+              <source src="images/suphcl_motivation.png" type="video/mp4">
+              Your browser does not support the video tag.
+              </video></div>
+              <img src='images/suphcl_motivation.png' width=100%>
+            </div>
+            <script type="text/javascript">
+              function suphcl_start() {
+                document.getElementById('suphcl_image').style.opacity = "1";
+              }
+    
+              function suphcl_stop() {
+                document.getElementById('suphcl_image').style.opacity = "0";
+              }
+              suphcl_stop()
+            </script>
+          </td>
+          <td style="padding:20px;width:75%;vertical-align:middle">
+            <a href="https://dl.acm.org/doi/10.1145/3503161.3548116">
+              <span class="papertitle">Pursuing Knowledge Consistency: Supervised Hierarchical contrastive Learning for Facial Action Unit Recognition</span>
+            </a>
+            <br>
+            <strong>Yingjie Chen</strong>,
+            Diqi Chen,
+            Tao Wang,
+            Yizhou Wang,
+            Yun Liang,
+            <br>
+            <em>AAAI, 2022</em>
+
+            <br>
+            <a href="https://dl.acm.org/doi/10.1145/3503161.3548116">arXiv</a>
+            /
+            <a href="https://github.com/echoanran/SupHCL">code</a>
+            <p></p>
+            <p>
+            We observe that there are three kinds of inherent relations among AUs, which can be treated as strong prior knowledge, and pursuing the consistency of such knowledge is the key to learning subject-consistent representations. To this end, we propose a supervised hierarchical contrastive learning method (SupHCL) for AU recognition to pursue knowledge consistency among different facial images and different AUs. 
+            </p>
+          </td>
+        </tr>
+      </tbody></table>
+
+        <!--  CIS  -->
+        <tr onmouseout="cis_stop()" onmouseover="cis_start()" bgcolor="#ffffd0">
+          <td style="padding:20px;width:25%;vertical-align:middle">
+            <div class="one">
+              <div class="two" id='cis_image'><video  width=100% muted autoplay loop>
+              <source src="images/cis_motivation.png" type="video/mp4">
+              Your browser does not support the video tag.
+              </video></div>
+              <img src='images/cis_motivation.png' width=100%>
+            </div>
+            <script type="text/javascript">
+              function cis_start() {
+                document.getElementById('cis_image').style.opacity = "1";
+              }
+    
+              function cis_stop() {
+                document.getElementById('cis_image').style.opacity = "0";
+              }
+              cis_stop()
+            </script>
+          </td>
+          <td style="padding:20px;width:75%;vertical-align:middle">
+            <a href="https://arxiv.org/abs/2204.07935.pdf">
+              <span class="papertitle">On Mitigating Hard Clusters for Face Clustering</span>
+            </a>
+            <br>
+            <strong>Yingjie Chen</strong>,
+            Diqi Chen,
+            Tao Wang,
+            Yizhou Wang,
+            Yun Liang,
+            <br>
+            <em>AAAI, 2022</em> <font color="red"><strong> &nbsp (Oral Presentation)</strong></font>
+
+            <br>
+            <a href="https://arxiv.org/abs/2204.07935.pdf">arXiv</a>
+            /
+            <a href="https://github.com/echoanran/CIS">code</a>
+            <p></p>
+            <p>
+            We formulate subject variant problem in AU recognition using an AU causal diagram to explain the whys and wherefores. Based on our causal diagram, we propose a plug-in causal intervention module, CIS, which could be inserted into advanced AU recognition models for removing the effect caused by confounder Subject.
+            </p>
+          </td>
+        </tr>
+      </tbody></table>
 
           <br>
           <br>
