@@ -54,17 +54,33 @@
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
             <!--  FaceClustering  -->
-            <tr onmouseout="adgan_stop()" onmouseover="adgan_start()" bgcolor="#ffffd0">
+            <tr onmouseout="adganpp_stop()" onmouseover="adganpp_start()">
               <td style="padding:20px;width:25%;vertical-align:middle">
                 <div class="one">
-                    <div class="two" id='adgan_image'>
-                  <img src='projects/FaceClustering/overview.png' width=100%>
+                  <div class="two" id='faceclustering_image'><video  width=100% muted autoplay loop>
+                  <source src="images/overview.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                  </video></div>
+                  <img src='images/overview.jpg' width=100%>
                 </div>
+                <script type="text/javascript">
+                  function adganpp_start() {
+                    document.getElementById('faceclustering_image').style.opacity = "1";
+                  }
+        
+                  function adganpp_stop() {
+                    document.getElementById('faceclustering_image').style.opacity = "0";
+                  }
+                adganpp_stop()
+                </script>
               </td>
               <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://menyifang.github.io/projects/ADGAN/ADGAN.html">
+                  <span class="papertitle">On Mitigating Hard Clusters for Face Clustering</span>
+                </a>
                 <br>
-                <strong>Yingjie Chen</strong>,
-                Huasong Zhong,
+                <strong>Yingjie Chen*</strong>,
+                Huasong Zhong*,
                 Chong Chen,
                 Chen Shen,
                 Jianqiang Huang,
