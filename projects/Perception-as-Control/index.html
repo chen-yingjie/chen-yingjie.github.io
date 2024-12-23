@@ -278,10 +278,8 @@
           <div class="col-12">
             
             <h1 style="font-weight: bold">
-                <b style="color: #6589bf">En</b><b style="color: #78aa58">3D</b>:
-                An Enhanced Generative Model for Sculpting
-                3D Humans from 2D Synthetic Data
-
+                <b style="color: #6589bf">Perception</b>-<b style="color: #78aa58">as</b>-<b style="color: #c68b5b">Control</b>:
+                Fine-grained Controllable Image-to-Video Generation with 3D-aware Motion Representation
             </h1>
             <!-- <h4 style="color:#5a6268;"> Conference [To be added] </h4> -->
             <a href="https://echoanran.github.io/chenyingjie" target="_blank">Yingjie Chen<sup>1</sup>, </a>
@@ -306,22 +304,24 @@
                   </a>
                 </p>
               </div>
-              <div class="column">
+              <!-- <div class="column">
                 <p class="mb-5">
                   <a class="btn btn-large btn-light" href="TODO: here is the github link" role="button" target="_blank">
                     <i class="fa fa-github"></i>
                     Code
                   </a>
                 </p>
-              </div>
-<!--              <div class="column">-->
-<!--                <p class="mb-5">-->
-<!--                  <a class="btn btn-large btn-light" href="https://comming_soon" role="button" target="_blank">-->
-<!--                    <i class="ai ai-arxiv"></i>-->
-<!--                    Online Demo-->
-<!--                  </a>-->
-<!--                </p>-->
-<!--              </div>-->
+              </div> -->
+
+             <div class="column">
+               <p class="mb-5">
+                 <a class="btn btn-large btn-light" href="https://comming_soon" role="button" target="_blank">
+                   <i class="ai ai-arxiv"></i>
+                   Online Demo
+                 </a>
+               </p>
+             </div>
+
             </div>
           </div>
         </div>
@@ -330,42 +330,15 @@
   </section>
   <section>
     <div class="container">
-        <h6 style="color: #8899a5">
-          Without any pre-existing 3D or 2D assets, our 3D generative model is trained on millions of synthetic 2D images, capable of producing visually realistic 3D humans with diverse contents.
-          <!-- The videos might take a few moments to load. -->
+        <b style="color: #000000">Perception-as-Control</b>, a xxx
+          
         </h6>
         <video autoplay="" class="a16x9demo" data-desktop-vid1="./assets/demo_zoom_full2.mp4"
             loop="" muted="" playsinline="" poster="img/spinner.svg" width="100%">
-          <!-- Find this: (\s*<source src=")https://zhenx.me/4k4d.assets/(.*" type=.*) -->
-          <!-- Replace with this: $0
-$1https://raw.githubusercontent.com/dendenxu/4k4d.github.io.assets/main/$2 -->
-          <!-- Find this: (\s*<source src=")(.*\.assets/)(.*" type=.*)(/>) -->
-          <!-- Replace with this: $1$2mobile/$3 media="(max-width: 768px)"$4
-$0 -->
         </video>
         <h6 style="color: #8899a5">
           The generated human avatars can be seemlessly rigged and animated, compatible with the mordern graphics workflow.
-          <!-- The videos might take a few moments to load. -->
         </h6>
-<!--        <video autoplay="" class="a16x9demo" data-desktop-vid1="./assets/demo_anime_action_p1.mp4"-->
-<!--            loop="" muted="" playsinline="" poster="img/spinner.svg" width="100%">-->
-<!--          <!-- Find this: (\s*<source src=")https://zhenx.me/4k4d.assets/(.*" type=.*) -->
-<!--          <!-- Replace with this: $0-->
-<!--$1https://raw.githubusercontent.com/dendenxu/4k4d.github.io.assets/main/$2 -->
-<!--          <!-- Find this: (\s*<source src=")(.*\.assets/)(.*" type=.*)(/>) -->
-<!--          <!-- Replace with this: $1$2mobile/$3 media="(max-width: 768px)"$4-->
-<!--$0 -->
-<!--        </video>-->
-<!--        <video autoplay="" class="a16x9demo" data-desktop-vid1="./assets/demo_anime_action_p2.mp4"-->
-<!--            loop="" muted="" playsinline="" poster="img/spinner.svg" width="100%">-->
-<!--          <!-- Find this: (\s*<source src=")https://zhenx.me/4k4d.assets/(.*" type=.*) -->
-<!--          <!-- Replace with this: $0-->
-<!--$1https://raw.githubusercontent.com/dendenxu/4k4d.github.io.assets/main/$2 -->
-<!--          <!-- Find this: (\s*<source src=")(.*\.assets/)(.*" type=.*)(/>) -->
-<!--          <!-- Replace with this: $1$2mobile/$3 media="(max-width: 768px)"$4-->
-<!--$0 -->
-<!--        </video>-->
-        
     </div>
   </section>
   
@@ -382,13 +355,6 @@ $0 -->
               <li data-slide-to="1" data-target="#bkgdCarousel">
                 <span class="indicator-dot"></span>
               </li>
-<!--              <li data-slide-to="2" data-target="#bkgdCarousel">-->
-<!--                <span class="indicator-dot"></span>-->
-<!--              </li>-->
-<!--              <li data-slide-to="3" data-target="#bkgdCarousel">-->
-<!--                <span class="indicator-dot"></span>-->
-<!--              </li>-->
-              <!-- Additional indicators... -->
             </ol>
             <div class="carousel-inner">
               <div class="carousel-item active">
@@ -441,9 +407,8 @@ $0 -->
         <div class="col-12">
           <h3>Abstract</h3>
           <hr style="margin-top: 0px" />
-<!--          <img src="img/teaser.jpg" width="100%" />-->
           <p class="text-left">
-          We present <strong>En3D</strong>, an enhanced generative scheme for sculpting high-quality 3D human avatars. Unlike previous works that rely on scarce 3D datasets or limited 2D collections with imbalanced viewing angles and imprecise pose priors, our approach aims to develop <strong>a zero-shot 3D generative scheme capable of producing visually realistic, geometrically accurate and content-wise diverse 3D humans without relying on pre-existing 3D or 2D assets</strong>. To address this challenge, we introduce a meticulously crafted workflow that implements accurate physical modeling to learn the enhanced 3D generative model from synthetic 2D data. During inference, we integrate optimization modules to bridge the gap between realistic appearances and coarse 3D shapes. Specifically, En3D comprises three modules: a 3D generator that accurately models generalizable 3D humans with realistic appearance from synthesized balanced, diverse, and structured human images; a geometry sculptor that enhances shape quality using multi-view normal constraints for intricate human anatomy; and a texturing module that disentangles explicit texture maps with fidelity and editability, leveraging semantical UV partitioning and a differentiable rasterizer. Experimental results show that our approach significantly outperforms prior works in terms of image quality, geometry accuracy and content diversity. We also showcase the applicability of our generated avatars for animation and editing, as well as the scalability of our approach for content-style free adaptation.
+          TODO: here is the abstract
           </p>
         </div>
       </div>
@@ -456,14 +421,9 @@ $0 -->
           <h3>Method</h3>
           <hr style="margin-top: 0px" />
 
-          <img src="img/pipeline.png" width="80%" />
+          <img src="assets/pipeline.png" width="80%" />
           <p>
-          An overview of the proposed scheme, which consists of three modules: 3D generative modeling (3DGM), the geometric sculpting (GS) and the explicit texturing (ET).
-          3DGM using synthesized diverse, balanced and structured human image with accurate camera $\varphi$ to learn generalizable 3D humans with the triplane-based architecture.
-          GS is integrated as an optimization module by utilizing multi-view normal constraints to refine and carve geometry details.
-          ET utilizes UV partitioning and a differentiable rasterizer to disentangles explicit UV texture maps.
-          Not only multi-view renderings but also realistic 3D models can be acquired for final results.
-          
+          TODO: here is the description of pipeline
           </p>
         </div>
       </div>
@@ -475,9 +435,9 @@ $0 -->
     <div class="container">
         <div class="row">
           <div class="col-12">
-          <h3>Applications</h3>
+          <h3>Results</h3>
           <hr style="margin-top: 0px" />
-          <h4>Text Guided Synthesis</h4>
+          <h4>Camera Motion Control</h4>
           <div class="carousel slide" data-interval="12000" data-ride="carousel" id="videoCarousel">
               <ol class="carousel-indicators">
                 <li class="active" data-slide-to="0" data-target="#videoCarousel">
@@ -518,7 +478,6 @@ $0 -->
                     <div class="col-md-6">
                       <div class="zoom-element">
                         <p>"An asian man with fabulous tank top, 36 years old, blue-black crew cut"</p>
-<!--                        <p>"An intricately illustrated image of a <strong>mechanic</strong> in a jumpsuit."</p>-->
                         <video class="a1x1demo" data-desktop-vid1="./assets/text23d_21.mp4" loop="" muted="" playsinline="" poster="img/spinner.svg" preload="none" width="100%">
                         </video>
                       </div>
@@ -576,7 +535,7 @@ $0 -->
   <div class="container">
     <div class="row">
       <div class="col-12">
-          <h4>Animated Avatars & AR Applications</h4>
+          <h4>Object Motion Control</h4>
           <div class="carousel slide" data-interval="12000" data-ride="carousel" id="videoCarouse2">
               <ol class="carousel-indicators">
                 <li class="active" data-slide-to="0" data-target="#videoCarouse2">
@@ -661,8 +620,6 @@ $0 -->
                 </div>
                 
                 
-                
-
                 <!-- Additional carousel items... -->
               </div>
               <a class="carousel-control-prev" data-slide="prev" href="#videoCarouse2" role="button">
@@ -681,17 +638,15 @@ $0 -->
   </section>
 
 
-
-
 <br />
 <br />
 <br />
 <br />
 <section>
   <div class="container">
-      <h4>Image Guided Synthesis</h4>
+      <h4>Object & Camera Motion Control</h4>
       <h5 style="color: #8899a5">
-          Animate-Anyone3D: Used for animate anyone with their underlying 3D structures.
+          todo: description
       </h5>
     <div class="row justify-content-center">
       <div class="col-md-12 text-center">
@@ -770,8 +725,9 @@ $0 -->
 <div class="container">
   <div class="row">
     <div class="col-12">
-        <h4>Local Editing</h4>
-<!--        <p >right-slide for edited outputs </p>-->
+        <h3>Applications</h3>
+
+        <h4>Motion Transfer</h4>
         <h5 style="color: #8899a5">
             You can easily edit guided images to obtain changed 3D models. Slides for edited results.
         </h5>
@@ -797,8 +753,6 @@ $0 -->
                     <div class="zoom-element">
                         <p align="center">Guided image </p>
                         <img src="./assets/img.png" width="70%" />
-<!--                        <video autoplay="" class="a1x1demo" data-desktop-vid1="./assets/edit.mp4" loop="" muted="" playsinline="" poster="img/spinner.svg" width="100%">-->
-<!--                        </video>-->
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -816,8 +770,6 @@ $0 -->
                     <div class="zoom-element">
                         <p align="center">Texture doodle </p>
                         <img src="./assets/img_doodle.png" width="70%" />
-<!--                      <video class="a1x1demo" data-desktop-vid1="./assets/edit_doodle.mp4" loop="" muted="" playsinline="" poster="img/spinner.svg" preload="none" width="100%">-->
-<!--                      </video>-->
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -835,8 +787,6 @@ $0 -->
                     <div class="zoom-element">
                         <p align="center">Cloth editing </p>
                       <img src="./assets/img_cloth.png" width="70%" />
-<!--                      <video class="a1x1demo" data-desktop-vid1="./assets/edit_cloth.mp4" loop="" muted="" playsinline="" poster="img/spinner.svg" preload="none" width="100%">-->
-<!--                      </video>-->
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -869,28 +819,160 @@ $0 -->
   </div>
 </section>
 
+<br />
+<br />
+<br />
+<br />
+<section>
+  <div class="container">
+      <h4>Video Editing</h4>
+      <h5 style="color: #8899a5">
+          todo: description
+      </h5>
+    <div class="row justify-content-center">
+      <div class="col-md-12 text-center">
+        <div class="carousel slide" data-interval="10000" data-ride="carousel" id="bkgdCarouse2">
+          <ol class="carousel-indicators">
+            <li class="active" data-slide-to="0" data-target="#bkgdCarouse2">
+              <span class="indicator-dot"></span>
+            </li>
+            <li data-slide-to="1" data-target="#bkgdCarouse2">
+              <span class="indicator-dot"></span>
+            </li>
+            <li data-slide-to="2" data-target="#bkgdCarouse2">
+              <span class="indicator-dot"></span>
+            </li>
 
-<!--<br />-->
-<!--<br />-->
-<!--<br />-->
-<!--<section>-->
-<!--  <div class="container">-->
-<!--    <div class="row">-->
-<!--      <div class="col-md-12">-->
-<!--        <h3>Video</h3>-->
-<!--        <hr style="margin-top: 0px" />-->
-<!--        <div class="embed-responsive embed-responsive-16by9">-->
-<!--          <iframe style="clip-path: inset(1px 1px)" width="100%" height="100%"-->
-<!--            src="https://www.youtube.com/embed/*****" frameborder="0"-->
-<!--            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"-->
-<!--            allowfullscreen=""></iframe>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <br />-->
-<!--  <br />-->
-<!--</section>-->
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row sm-gutters">
+                <div class="col-md-12">
+                  <video autoplay="" class="a16x9demo" data-desktop-vid1="./assets/img23d_curry.mp4"
+                       loop="" muted="" playsinline="" poster="img/spinner.svg" width="100%">
+ 
+                  </video>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="row sm-gutters">
+                <div class="col-md-12">
+                  <video class="a16x9demo" data-desktop-vid1="./assets/img23d_spiderMan.mp4"
+                      loop="" muted="" playsinline="" poster="img/spinner.svg" preload="none" width="100%">
+                  </video>
+                </div>
+              </div>
+            </div>
+            
+            <div class="carousel-item">
+              <div class="row sm-gutters">
+                <div class="col-md-12">
+                  <video class="a16x9demo" data-desktop-vid1="./assets/img23d_celib_ow.mp4"
+                      loop="" muted="" playsinline="" poster="img/spinner.svg" preload="none" width="100%">
+                  </video>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Additional carousel items... -->
+          </div>
+          <a class="carousel-control-prev" data-slide="prev" href="#bkgdCarouse2" role="button">
+            <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" data-slide="next" href="#bkgdCarouse2" role="button">
+            <span aria-hidden="true" class="carousel-control-next-icon"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
+
+           
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<br />
+<br />
+<br />
+<br />
+<section>
+  <div class="container">
+      <h4>Background Adaptation</h4>
+      <h5 style="color: #8899a5">
+          todo: description
+      </h5>
+    <div class="row justify-content-center">
+      <div class="col-md-12 text-center">
+        <div class="carousel slide" data-interval="10000" data-ride="carousel" id="bkgdCarouse2">
+          <ol class="carousel-indicators">
+            <li class="active" data-slide-to="0" data-target="#bkgdCarouse2">
+              <span class="indicator-dot"></span>
+            </li>
+            <li data-slide-to="1" data-target="#bkgdCarouse2">
+              <span class="indicator-dot"></span>
+            </li>
+            <li data-slide-to="2" data-target="#bkgdCarouse2">
+              <span class="indicator-dot"></span>
+            </li>
+
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row sm-gutters">
+                <div class="col-md-12">
+                  <video autoplay="" class="a16x9demo" data-desktop-vid1="./assets/img23d_curry.mp4"
+                       loop="" muted="" playsinline="" poster="img/spinner.svg" width="100%">
+ 
+                  </video>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="row sm-gutters">
+                <div class="col-md-12">
+                  <video class="a16x9demo" data-desktop-vid1="./assets/img23d_spiderMan.mp4"
+                      loop="" muted="" playsinline="" poster="img/spinner.svg" preload="none" width="100%">
+                  </video>
+                </div>
+              </div>
+            </div>
+            
+            <div class="carousel-item">
+              <div class="row sm-gutters">
+                <div class="col-md-12">
+                  <video class="a16x9demo" data-desktop-vid1="./assets/img23d_celib_ow.mp4"
+                      loop="" muted="" playsinline="" poster="img/spinner.svg" preload="none" width="100%">
+                  </video>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Additional carousel items... -->
+          </div>
+          <a class="carousel-control-prev" data-slide="prev" href="#bkgdCarouse2" role="button">
+            <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" data-slide="next" href="#bkgdCarouse2" role="button">
+            <span aria-hidden="true" class="carousel-control-next-icon"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
+
+           
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
   <!-- citing -->
