@@ -239,7 +239,7 @@
             <tr onmouseout="cis_stop()" onmouseover="cis_start()" bgcolor="#ffffd0">
               <td style="padding:20px;width:25%;vertical-align:middle">
                 <div class="one">
-                  <div class="two" id='cis_image'><video  width=100% muted autoplay loop>
+                  <div class="two" id='cafgraph_image'><video  width=100% muted autoplay loop>
                   <source src="images/cafgraph_motivation.png" type="video/mp4">
                   Your browser does not support the video tag.
                   </video></div>
@@ -247,18 +247,18 @@
                 </div>
                 <script type="text/javascript">
                   function cis_start() {
-                    document.getElementById('cis_image').style.opacity = "1";
+                    document.getElementById('cafgraph_image').style.opacity = "1";
                   }
         
                   function cis_stop() {
-                    document.getElementById('cis_image').style.opacity = "0";
+                    document.getElementById('cafgraph_image').style.opacity = "0";
                   }
                   cis_stop()
                 </script>
               </td>
               <td style="padding:20px;width:75%;vertical-align:middle">
                 <a href="https://dl.acm.org/doi/abs/10.1145/3474085.3475295">
-                  <span class="papertitle">On Mitigating Hard Clusters for Face Clustering</span>
+                  <span class="papertitle">CaFGraph: Context-aware Facial Multi-graph Representation for Facial Action Unit Recognition</span>
                 </a>
                 <br>
                 <strong>Yingjie Chen</strong>,
@@ -276,6 +276,51 @@
                 <p></p>
                 <p>
                 Considering that context is essential to resolve ambiguity in human visual system, modeling context within or among facial images emerges as a promising approach for AU recognition task. To this end, we propose CaFGraph, a novel context-aware facial multi-graph that can model both morphological & muscular-based region-level local context and region-level temporal context. 
+                </p>
+              </td>
+            </tr>
+
+            <!--  FSNet  -->
+            <tr onmouseout="cis_stop()" onmouseover="cis_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <div class="two" id='fsnet_image'><video  width=100% muted autoplay loop>
+                  <source src="images/fsnet_motivation.png" type="video/mp4">
+                  Your browser does not support the video tag.
+                  </video></div>
+                  <img src='images/fsnet_motivation.png' width=100%>
+                </div>
+                <script type="text/javascript">
+                  function cis_start() {
+                    document.getElementById('fsnet_image').style.opacity = "1";
+                  }
+        
+                  function cis_stop() {
+                    document.getElementById('fsnet_image').style.opacity = "0";
+                  }
+                  cis_stop()
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://ieeexplore.ieee.org/document/9495228">
+                  <span class="papertitle">Cross-Modal Representation Learning for Lightweight and Accurate Facial Action Unit Detection</span>
+                </a>
+                <br>
+                <strong>Yingjie Chen</strong>,
+                Han Wu,
+                Tao Wang,
+                Yizhou Wang,
+                Yun Liang,
+                <br>
+                <em>IEEE Robotics Autom. Lett. 2021</em> 
+
+                <br>
+                <a href="https://ieeexplore.ieee.org/document/9495228">arXiv</a>
+                /
+                <a href="https://github.com/echoanran/AU_detection_optical_flow">code</a>
+                <p></p>
+                <p>
+                The dynamic process of facial muscle movement, as the core feature of AU, is yet ignored and rarely exploited by prior studies. Based on such observation, we propose Flow Supervised Module (FSM) to explicitly capture the dynamic facial movement in the form of Flow and use the learned Flow to provide supervision signals for the detection model during the training stage effectively and efficiently.
                 </p>
               </td>
             </tr>
