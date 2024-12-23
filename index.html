@@ -177,7 +177,7 @@
                 Yizhou Wang,
                 Yun Liang,
                 <br>
-                <em>AAAI, 2022</em>
+                <em>ACM MM, 2022</em>
 
                 <br>
                 <a href="https://dl.acm.org/doi/10.1145/3503161.3548116">arXiv</a>
@@ -231,6 +231,51 @@
                 <p></p>
                 <p>
                 We formulate subject variant problem in AU recognition using an AU causal diagram to explain the whys and wherefores. Based on our causal diagram, we propose a plug-in causal intervention module, CIS, which could be inserted into advanced AU recognition models for removing the effect caused by confounder Subject.
+                </p>
+              </td>
+            </tr>
+
+            <!--  CaFGraph  -->
+            <tr onmouseout="cis_stop()" onmouseover="cis_start()" bgcolor="#ffffd0">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <div class="two" id='cis_image'><video  width=100% muted autoplay loop>
+                  <source src="images/cafgraph_motivation.png" type="video/mp4">
+                  Your browser does not support the video tag.
+                  </video></div>
+                  <img src='images/cafgraph_motivation.png' width=100%>
+                </div>
+                <script type="text/javascript">
+                  function cis_start() {
+                    document.getElementById('cis_image').style.opacity = "1";
+                  }
+        
+                  function cis_stop() {
+                    document.getElementById('cis_image').style.opacity = "0";
+                  }
+                  cis_stop()
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://dl.acm.org/doi/abs/10.1145/3474085.3475295">
+                  <span class="papertitle">On Mitigating Hard Clusters for Face Clustering</span>
+                </a>
+                <br>
+                <strong>Yingjie Chen</strong>,
+                Diqi Chen,
+                Yizhou Wang,
+                Tao Wang,
+                Yun Liang,
+                <br>
+                <em>ACM MM, 2021</em> <font color="red"><strong> &nbsp (Oral Presentation)</strong></font>
+
+                <br>
+                <a href="https://dl.acm.org/doi/abs/10.1145/3474085.3475295">arXiv</a>
+                /
+                <a href="https://github.com/echoanran/AU_detection_GCN">code</a>
+                <p></p>
+                <p>
+                Considering that context is essential to resolve ambiguity in human visual system, modeling context within or among facial images emerges as a promising approach for AU recognition task. To this end, we propose CaFGraph, a novel context-aware facial multi-graph that can model both morphological & muscular-based region-level local context and region-level temporal context. 
                 </p>
               </td>
             </tr>
