@@ -333,7 +333,7 @@
 
     <div class="container">
         <h6 style="color: #8899a5">
-          By constructing 3D-aware motion representations based on <b style="color: #070d0d">various user intentions</b> and taking the perception results as motion control signals, the proposed fine-grained motion-controllable image animation framework can be applied to various motion-related video synthesis tasks.
+          By constructing 3D-aware motion representation based on <b style="color: #070d0d">various user intentions</b> and taking the perception results as motion control signals, the proposed fine-grained motion-controllable image animation framework can be applied to various motion-related video synthesis tasks.
         </h6>
         <!-- <video autoplay="" class="a16x9demo" data-desktop-vid1="./assets/image_animation.mp4"
             loop="" muted="" playsinline="" poster="img/spinner.svg" width="100%">
@@ -419,8 +419,9 @@
           <hr style="margin-top: 0px" />
           <p class="text-left">
             Motion-controllable image animation is a fundamental task with a wide range of potential applications. Recent works have made progress in controlling camera or object motion via the same 2D motion representations or different control signals, while they still struggle in supporting collaborative camera and object motion control with adaptive control granularity.
-            To this end, we design 3D-aware motion representations and propose a framework called Perception-as-Control to achieve fine-grained controllable image animation.
-            Specifically, by constructing 3D-aware motion representations based on various user intentions, perceiving them via rendering, and taking the perception results as motion control signals, the proposed framework can support various motion-related video synthesis tasks in a unified and flexible way.
+            To this end, we introduce 3D-aware motion representation and propose an image animation framework, called Perception-as-Control, to achieve fine-grained collaborative motion control.
+            Specifically, we construct 3D-aware motion representation from a reference image, manipulate it based on interpreted user intentions, and perceive it from different viewpoints. This way, camera and object motions are transformed into intuitive, consistent visual changes.
+            Then, the proposed framework leverages the perception results as motion control signals, enabling it to support various motion-related video synthesis tasks in a unified and flexible way.
             Experiments demonstrate the superiority of the proposed method.
           </p>
         </div>
@@ -435,7 +436,7 @@
           <hr style="margin-top: 0px" />
           <img src="img/overview.png" style="width:80%"></img>
           <p>
-            In our data curation pipeline, an in-the-wild video is taken as input, and off-the-shelf visual odometry and 3D point tracking algorithms are applied to obtain camera pose sequence and 3D point positions. Based on these results, 3D-aware motion representation can be constructed to render camera and object control signals. During training, those control signals are fed into individual encoders to avoid RGB-level interference and merged afterward. Three-stage training strategy is introduced for achieving fine-grained collaborative motion control. During inference, user intentions are first interpreted as 3D-aware motion representations, which enables our framework to support a variety of motion-related applications.
+            In our data curation pipeline, an in-the-wild video is taken as input, and off-the-shelf visual odometry and 3D point tracking algorithms are applied to obtain camera pose sequence and 3D point positions. Based on these results, 3D-aware motion representation can be constructed to render camera and object control signals. During training, those control signals are fed into individual encoders to avoid RGB-level interference and merged afterward. Three-stage training strategy is introduced for achieving fine-grained collaborative motion control. During inference, user intentions are first interpreted as 3D-aware motion representation, which enables our framework to support a variety of motion-related applications.
           </p>
         </div>
       </div>
