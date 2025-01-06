@@ -10670,3 +10670,15 @@ a.text-dark:focus {
     }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+/* 确保 .row 没有默认的 margin 和 padding */
+.no-vertical-margin {
+    margin: 0;
+    padding: 0;
+}
+
+/* 确保视频没有上下 margin */
+.video-no-margin {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
