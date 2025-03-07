@@ -355,21 +355,6 @@
           </video>
         </div> -->
 
-        <!-- <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <h3>Demo Video</h3>
-              <hr style="margin-top: 0px" />
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe style="clip-path: inset(1px 1px)" width="100%" height="100%"
-                  src="https://www.youtube.com/embed/skw9lPKFfcE" frameborder="0"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen=""></iframe>
-              </div>
-            </div>
-          </div>
-        </div> -->
-
     </div>
   </div>
   </section>
@@ -432,7 +417,7 @@
    -->
   
   
-  <section>
+  <section id="abstract">
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -449,7 +434,8 @@
       </div>
     </div>
   </section>
-  <section>
+
+  <section id="overview">
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -464,11 +450,26 @@
     </div>
   </section>
 
-  <section>
+  <br />
+  <br />
+  <div class="container">
+    <nav class="toc">
+      <h3>Contents</h3>
+      <hr style="margin-top: 0px" />
+      <a href="#results" style="font-size: 22px;">Fine-grained Collaborative Motion Control</a><br>
+      <a href="#cmp_sota" style="font-size: 22px;">Comparison to State-of-the-arts</a><br>
+      <a href="#applications" style="font-size: 22px;">Potential Applications</a><br>
+      <a href="#demo_video" style="font-size: 22px;">Demo Video</a>
+    </nav>
+  </div>
+
+  <br />
+  <br />
+  <section id="results">
       <div class="container">
           <div class="row">
           <div class="col-12">
-          <h3>Qualitative Results</h3>
+          <h3>Fine-grained Collaborative Motion Control</h3>
           <hr style="margin-top: 0px" />
   
           <div class="content">
@@ -876,14 +877,184 @@
           </div>
     </div>
   </section>
+
+
+  <br />
+  <br />
+  <section id="cmp_sota">
+      <div class="container">
+          <div class="row">
+          <div class="col-12">
+          <h3>Comparison to State-of-the-arts</h3>
+          <hr style="margin-top: 0px" />
+          <h4>Camera Motion Control</h4>
+          <h5 style="color: #8899a5">
+              We compare Perception-as-Control to the state-of-the-art methods, CameraCtrl and MotionCtrl, in terms of camera motion control.
+          </h5>
+  
+              <div class="row">
+                  <div class="col">
+                  <p>Camera Movement</p>
+                  <video src="gallery/vis_camera/PanUp_vis_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <p>Point Cloud Reference</p>
+                  <video src="gallery/cmp_sota/building_panup_pointcloud_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <p>MotionCtrl</p>
+                  <video src="gallery/cmp_sota/building_panup_motionctrl_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <p>CameraCtrl</p>
+                  <video src="gallery/cmp_sota/building_panup_cameractrl.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <p>Ours</p>
+                  <video src="gallery/cmp_sota/building_panup_ours_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+              </div>
+              
+              <div class="row">
+                  <div class="col">
+                  <p>Camera Movement</p>
+                  <video src="gallery/vis_camera/SurroundDown_vis_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <p>Point Cloud Reference</p>
+                  <video src="gallery/cmp_sota/penguins_surrounddown_pointcloud_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <p>MotionCtrl</p>
+                  <video src="gallery/cmp_sota/penguins_surrounddown_motionctrl_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <p>CameraCtrl</p>
+                  <video src="gallery/cmp_sota/penguins_surrounddown_cameractrl_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <p>Ours</p>
+                  <video src="gallery/cmp_sota/penguins_surrounddown_ours_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                <p>Camera Movement</p>
+                <video src="gallery/vis_camera/0c9b371cc6225682_vis_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <p>Point Cloud Reference</p>
+                <video src="gallery/cmp_sota/blue_penguin_0c9b371cc6225682_pointcloud_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <p>MotionCtrl</p>
+                <video src="gallery/cmp_sota/blue_penguin_0c9b371cc6225682_motionctrl_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <p>CameraCtrl</p>
+                <video src="gallery/cmp_sota/blue_penguin_0c9b371cc6225682_cameractrl.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <p>Ours</p>
+                <video src="gallery/cmp_sota/blue_penguin_0c9b371cc6225682_ours_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+            </div>
+  
+
+          <h4>Object Motion Control & Collaborative motion control</h4>
+          <h5 style="color: #8899a5">
+              We compare Perception-as-Control to the state-of-the-art methods, Motion-I2V and MOFA-Video, in terms of object motion control and simple collaborative motion control.
+          </h5>
+  
+              <p>User Drags</p>
+              <div class="row">
+                <div class="col">
+                  <video src="gallery/vis_hint/global1_hint.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_hint/global2_hint.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_hint/cars_hint.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_hint/cross1_hint.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_hint/ball_hint.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+              </div>
+              
+              <p>Motion-I2V</p>
+              <div class="row">
+                <div class="col">
+                <video src="gallery/cmp_sota/global1_motioni2v.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/global2_motioni2v.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/cars_motioni2v.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/cross1_motioni2v.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/ball_motioni2v.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+              </div>
+
+              
+              <p>MOFA-Video</p>
+              <div class="row">
+                <div class="col">
+                <video src="gallery/cmp_sota/global1_mofa.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/global2_mofa.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/cars_mofa.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/cross1_mofa.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/ball_mofa.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+              </div>
+
+              <p>Ours</p>
+              <div class="row">
+                <div class="col">
+                <video src="gallery/cmp_sota/global1_ours_interp_sample.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/global2_ours_interp_sample.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/cars_ours_interp_sample.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/cross1_ours_interp_sample.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/ball_ours_interp_sample.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          </div>
+    </div>
+  </section>  
     
 
-
 <br />
 <br />
-<br />
-<br />
-<section>
+<section id="applications">
     <div class="container">
         <div class="row">
         <div class="col-12">
@@ -891,10 +1062,10 @@
         <hr style="margin-top: 0px" />
         <h4>Motion Generation</h4>
         <h5 style="color: #8899a5">
-            Draw 2D trajectories on the reference image and create an animation based on them. We visualize how 2D trajectories change over time, using colors to represent the direction of movement.
+            Draw 2D/3D trajectories on the reference image and create an animation based on them. We visualize how these trajectories change over time, using colors to represent the direction of movement.
         </h5>
 
-            <p>2D Trajectories</p>
+            <p>User Drags</p>
             <div class="row">
                 <div class="col">
                 <video src="gallery/vis_hint/panda_hug_hint.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
@@ -947,7 +1118,7 @@
   <div class="container">
       <h4>Motion Clone</h4>
       <h5 style="color: #8899a5">
-          Mimic all motions in the source video.
+          Mimic both camera and object motions in the source video.
       </h5>
       
       <div class="content">
@@ -1003,7 +1174,7 @@
   <div class="container">
       <h4>Motion Transfer</h4>
       <h5 style="color: #8899a5">
-          Transfer motions from the source video to the reference image based on semantic correspondence.
+          Transfer local motions from the source video to the reference image based on semantic correspondence.
       </h5>
 
       <div class="content">
@@ -1221,7 +1392,7 @@
 <br />
 <br />
 <br />
-<section>
+<section id="demo_video">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
