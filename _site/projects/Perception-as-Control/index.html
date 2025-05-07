@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta content="Perception-as-Control" name="title" />
+  <meta content="Fine-grained Controllable Image Animation with 3D-aware Motion Representation" name="description" />
+  <meta content="Computer Vision, Generative AI, Video Generation, Motion Control" name="keywords" />
+  <meta content="index, follow" name="robots" />
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <meta content="English" name="language" />
+  <meta content="Yingjie Chen" name="author" />
+  <link rel="shortcut icon" href="img/favicon/favicon.ico" type="img/x-icon">
+  <title>Perception-as-Control</title>
+  <!-- Bootstrap -->
+  <script src="js/video_comparison.js"></script>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap-4.4.1.js"></script>
+
+  <link href="css/bootstrap-4.4.1.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;700;800;900&amp;display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" rel="stylesheet" />
+<!--  <link href="img/favicon1.eps" rel="icon" sizes="any" type="image/svg+xml" />-->
+
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/contrib/auto-render.min.js"></script>
+
+  <style>
+    code {
+      white-space: pre-wrap;
+    }
+
+    body {
+      font-family: 'Jost';
+    }
+
+    b {
+      font-weight: black;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    section>h5 {
+      padding-bottom: 30px;
+    }
+
+    .col-12>h3 {
+      padding-top: 30px;
+    }
+
+    .results-section {
+      padding-bottom: 30px;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .carousel-control-prev {
+      left: 25px;
+    }
+
+    .carousel-control-next {
+      right: 25px;
+    }
+
+    .carousel-indicators {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      bottom: 10%;
+      left: 90%;
+
+      /* Adjust vertical position */
+      text-align: center;
+      /* Center the content horizontally */
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .carousel-indicators li {
+      background-color: transparent;
+      /* Hide the default Bootstrap indicators */
+      border: none;
+      /* Remove border */
+      margin: 0 25px;
+      display: inline-block;
+    }
+
+    .indicator-dot {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      text-indent: -999px;
+      border: none;
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .row.sm-gutters {
+      margin-right: 5px;
+      margin-left: 5px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+  .row.sm-gutters-2 {
+      justify-content: center;
+      align-items:center;
+  }
+
+    .row.sm-gutters>.col-md-4 {
+      padding-right: 5px;
+      padding-left: 5px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+
+    .row.sm-gutters>.col-md-6 {
+      padding-right: 5px;
+      padding-left: 5px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+  .row.sm-gutters>.col-md-6-2 {
+      justify-content: center;
+      align-items:center;
+  }
+  .row.sm-gutters>.col-md-6-3 {
+      padding-right: 5px;
+      padding-left: 5px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+  }
+
+    .row.sm-gutters>.col-md-12 {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+
+    .renbody-zoom-container {
+      width: 80%;
+      /* Or whatever size you want */
+      aspect-ratio: 0.75;
+      /* Or whatever size you want */
+      overflow: hidden;
+      /* Hide the parts of the video outside the container */
+      object-fit: cover;
+      /* Make sure the video covers the container without stretching */
+      object-position: center;
+      /* Center the video */
+      border-radius: 5px;
+    }
+
+    .mobile-zoom-container {
+      width: 100%;
+      /* Or whatever size you want */
+      aspect-ratio: 0.75;
+      /* Or whatever size you want */
+      overflow: hidden;
+      /* Hide the parts of the video outside the container */
+      object-fit: cover;
+      /* Make sure the video covers the container without stretching */
+      object-position: center;
+      /* Center the video */
+      border-radius: 5px;
+      margin: 5px
+    }
+
+    .video-zoom-container {
+      overflow: hidden;
+      /* Hide the parts of the video outside the container */
+      object-fit: cover;
+      /* Make sure the video covers the container without stretching */
+      object-position: center;
+      border-radius: 5px;
+      margin: 5px;
+    }
+
+    .zoom-element {
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .zoom-element:hover {
+      transform: scale(1.65);
+    }
+
+    .nhr-zoom {
+      transform: scale(1.45);
+    }
+
+    .renbody-zoom {
+      transform: scale(1.65) translateY(2%);
+      border-radius: 5px;
+    }
+
+    .mobile-zoom {
+      transform: scale(1.65);
+      border-radius: 5px;
+    }
+
+    .zjumocap-zoom {
+      transform: scale(1.3);
+    }
+
+    video {
+      border-radius: 5px;
+      padding: 0px;
+      margin: 0px;
+    }
+
+    .comparison-canvas {
+      padding: 0px;
+      margin: 0px;
+      border-radius: 5px;
+    }
+
+    .a16x9 {
+      aspect-ratio: 16/9;
+    }
+
+    .a4x3 {
+      aspect-ratio: 1352/1014;
+    }
+
+    .a1x1 {
+      aspect-ratio: 1;
+    }
+
+    .a16x9demo {
+      aspect-ratio: 1920/1152;
+    }
+
+    .a4x3demo {
+      aspect-ratio: 1352/1086;
+    }
+
+    .a1x1demo {
+      aspect-ratio: 1600/1672;
+    }
+  
+  img {
+        display: block;
+        margin: 0 auto;
+      }
+  
+  </style>
+  <script>
+
+
+
+  </script>
+  </link>
+</head>
+
+<body>
+  <!-- cover -->
+  <section>
+    <div class="jumbotron text-center mt-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            
+            <h1 style="font-weight: bold">
+                <b style="color: #6589bf">Perception</b>-<b style="color: #78aa58">as</b>-<b style="color: #c68b5b">Control</b>:
+                Fine-grained Controllable Image Animation with 3D-aware Motion Representation
+            </h1>
+            <!-- <h4 style="color:#5a6268;"> Conference [To be added] </h4> -->
+            <a href="https://echoanran.github.io/chenyingjie" target="_blank">Yingjie Chen, Yifang Men, Yuan Yao, Miaomiao Cui, Liefeng Bo</a>
+            <p>
+            Institute for Intelligent Computing, Alibaba Tongyi Lab
+            </p>
+            <div class="row justify-content-center">
+              <div class="column">
+                <p class="mb-5">
+                  <a class="btn btn-large btn-light" href="https://arxiv.org/pdf/2501.05020" role="button" target="_blank">
+                    <i class="file-pdf"></i>
+                    Paper
+                  </a>
+                </p>
+              </div>
+              <div class="column">
+                <p class="mb-5">
+                  <a class="btn btn-large btn-light" href="http://arxiv.org/pdf/2501.05020" role="button" target="_blank">
+                    <i class="arxiv"></i>
+                    arXiv
+                  </a>
+                </p>
+              </div>
+              <div class="column">
+                <p class="mb-5">
+                  <a class="btn btn-large btn-light" href="https://github.com/chen-yingjie/Perception-as-Control" role="button" target="_blank">
+                    <i class="github"></i>
+                    Code
+                  </a>
+                </p>
+              </div>
+              <div class="column">
+                <p class="mb-5">
+                  <a class="btn btn-large btn-light" href="https://youtu.be/r2DszXAqbRE" role="button" target="_blank">
+                    <i class="file-video"></i>
+                    Video
+                  </a>
+                </p>
+              </div>
+             <div class="column">
+               <p class="mb-5">
+                 <a class="btn btn-large btn-light" href="https://github.com/chen-yingjie/Perception-as-Control" role="button" target="_blank">
+                   <i class="demo"></i>
+                   Online Demo
+                 </a>
+               </p>
+             </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+        <h6 style="color: #8899a5">
+          By constructing 3D-aware motion representation based on <b style="color: #070d0d">various user intentions</b> and taking the perception results as motion control signals, the proposed fine-grained motion-controllable image animation framework can be applied to various motion-related video synthesis tasks.
+        </h6>
+        <div class="col">
+        <img src="img/teaser.png" style="width:100%"></img>
+        </div>
+
+    </div>
+  </div>
+  </section>
+
+  
+  <section id="abstract">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h3>Abstract</h3>
+          <hr style="margin-top: 0px" />
+          <p class="text-left">
+            Motion-controllable image animation is a fundamental task with a wide range of potential applications. Recent works have made progress in controlling camera or object motion via the same 2D motion representations or different control signals, while they still struggle in supporting collaborative camera and object motion control with adaptive control granularity.
+            To this end, we introduce 3D-aware motion representation and propose an image animation framework, called Perception-as-Control, to achieve fine-grained collaborative motion control.
+            Specifically, we construct 3D-aware motion representation from a reference image, manipulate it based on interpreted user intentions, and perceive it from different viewpoints. In this way, camera and object motions are transformed into intuitive, consistent visual changes.
+            Then, the proposed framework leverages the perception results as motion control signals, enabling it to support various motion-related video synthesis tasks in a unified and flexible way.
+            Experiments demonstrate the superiority of the proposed method.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="overview">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h3>Method</h3>
+          <hr style="margin-top: 0px" />
+          <img src="img/overview.png" style="width:80%"></img>
+          <p>
+            In our data curation pipeline, an in-the-wild video is taken as input, and off-the-shelf visual odometry and 3D point tracking algorithms are applied to obtain camera pose sequence and 3D point positions. Based on these results, 3D-aware motion representation can be constructed to render camera and object control signals. During training, those control signals are fed into individual encoders to avoid RGB-level interference and merged afterward. Three-stage training strategy is introduced for achieving fine-grained collaborative motion control. During inference, user intentions are first interpreted as 3D-aware motion representation, which enables our framework to support a variety of motion-related applications.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <br />
+  <br />
+  <div class="container">
+    <nav class="toc">
+      <h3>Contents</h3>
+      <hr style="margin-top: 0px" />
+      <a href="#results" style="font-size: 22px;">Fine-grained Collaborative Motion Control</a><br>
+      <a href="#camera-only" style="font-size: 22px; margin-left: 2em">Camera-only Motion Control</a><br>
+      <a href="#object-only" style="font-size: 22px; margin-left: 2em">Object-only Motion Control</a><br>
+      <a href="#collaborative" style="font-size: 22px; margin-left: 2em">Collaborative Motion Control</a><br>
+      <a href="#cmp_sota" style="font-size: 22px;">Comparison to State-of-the-arts</a><br>
+      <a href="#applications" style="font-size: 22px;">Potential Applications</a><br>
+      <a href="#demo_video" style="font-size: 22px;">Demo Video</a>
+    </nav>
+  </div>
+
+  <br />
+  <br />
+  <section id="results">
+      <div class="container">
+          <div class="row">
+          <div class="col-12">
+          <h3>Fine-grained Collaborative Motion Control</h3>
+          <hr style="margin-top: 0px" />
+  
+          <div class="content" id="camera-only">
+              <h4>Camera-only Motion Control</h4>
+              <h5 style="color: #8899a5">
+                We select both basic and arbitrary camera motions and visualize them in 3D.
+              </h5>
+
+              <h6 style="color: #070d0d">
+                Basic Camera Movements
+              </h6>
+              <div class="row">
+                  <div class="col">
+                    <p>Camera Movements</p>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_camera/PanLeft_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_camera/PanRight_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_camera/PanUp_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_camera/PanDown_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+              </div>
+  
+              <p>Reference Image</p>
+              <div class="row">
+                  <div class="col">
+                  <img src="gallery/refs/手绘风渐变暖色调中国风古建筑大雁云层松树亭台楼阁冬天风景插画建筑_AIGC176-ch07_ref.png" style="width:100%"></img>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/camera-only/手绘风渐变暖色调中国风古建筑大雁云层松树亭台楼阁冬天风景插画建筑_AIGC176-ch07_PanLeft_12589_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/camera-only/手绘风渐变暖色调中国风古建筑大雁云层松树亭台楼阁冬天风景插画建筑_AIGC176-ch07_PanRight_12589_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/camera-only/手绘风渐变暖色调中国风古建筑大雁云层松树亭台楼阁冬天风景插画建筑_AIGC176-ch07_PanUp_12583_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/camera-only/手绘风渐变暖色调中国风古建筑大雁云层松树亭台楼阁冬天风景插画建筑_AIGC176-ch07_ref_PanDown_12584_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+              </div>
+  
+              <br />
+              <div class="row">
+                  <div class="col">
+                    <p>Camera Movements</p>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_camera/TiltRight_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_camera/TiltLeft_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_camera/TiltUp_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_camera/TiltDown_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+              </div>
+  
+              <p>Reference Image</p>
+              <div class="row">
+                  <div class="col">
+                  <img src="gallery/refs/img_138_ref.png" style="width:100%"></img>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/camera-only/img_138_TiltRight_12580_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/camera-only/img_138_TiltLeft_12585_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/camera-only/img_138_TiltUp_12580_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/camera-only/img_138_TiltDown_12583_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+              </div>
+              
+              <br />
+              <div class="row">
+                  <div class="col">
+                    <p>Camera Movements</p>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_camera/ZoomIn_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_camera/ZoomOut_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_camera/ClockwiseRoll_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_camera/AnticlockwiseRoll_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+              </div>
+  
+              <p>Reference Image</p>
+              <div class="row">
+                  <div class="col">
+                  <img src="gallery/refs/手绘风渐变暖色调中国风古建筑云层山脉亭台楼阁冬天风景插画建筑_AIGC176-ch05_ref.png" style="width:100%"></img>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/camera-only/手绘风渐变暖色调中国风古建筑云层山脉亭台楼阁冬天风景插画建筑_AIGC176-ch05_ZoomIn_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/camera-only/手绘风渐变暖色调中国风古建筑云层山脉亭台楼阁冬天风景插画建筑_AIGC176-ch05_ZoomOut_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/camera-only/手绘风渐变暖色调中国风古建筑云层山脉亭台楼阁冬天风景插画建筑_AIGC176-ch05_ClockwiseRoll_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/camera-only/手绘风渐变暖色调中国风古建筑云层山脉亭台楼阁冬天风景插画建筑_AIGC176-ch05_AnticlockwiseRoll_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+              </div>
+
+              <br />
+              <div class="row">
+                <div class="col">
+                  <p>Camera Movements</p>
+                </div>
+                <div class="col">
+                <video src="gallery/vis_camera/SurroundRight_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/vis_camera/SurroundLeft_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/vis_camera/SurroundUp_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/vis_camera/SurroundDown_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                  <p>Generated Results</p>
+                </div>
+                <div class="col">
+                <video src="gallery/camera-only/littlebird_SurroundRight_12587_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/camera-only/redcar_SurroundLeft_12597_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/camera-only/blue_penguins_SurroundUp_12587_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/camera-only/penguins_SurroundDown_12583_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+            </div>
+  
+  
+              <br />
+              <br />
+              <br />
+              <br />
+              <h6 style="color: #070d0d">
+                Arbitrary Camera Movements
+              </h6>
+              <div class="row">
+                  <div class="col">
+                    <p>Camera Movements</p>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_camera/Random_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_camera/ZoomInZoomOut_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_camera/TiltRightZoomIn_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_camera/PanLeftTiltUp_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+              </div>
+  
+              <p>Reference Image</p>
+              <div class="row">
+                  <div class="col">
+                  <img src="gallery/refs/img_176_ref.png" style="width:100%"></img>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/camera-only/img_176_Random_12579_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/camera-only/img_176_ref_ZoomInZoomOut_12580_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/camera-only/img_176_ref_TiltRightZoomIn_12573_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/camera-only/img_176_PanLeftTiltUp_12597_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+              </div>
+  
+  
+              
+          </div>
+  
+          <br />
+          <br />
+          <br />
+          <br />
+          <div class="content" id="object-only">
+              <h4>Object-only Motion Control</h4>
+              <h5 style="color: #8899a5">
+                Since there is no camera motion, we project 3D movements of unit spheres onto the pixel plane and visualize how they change over time, using colors to represent the direction of movement.
+              </h5>
+
+              <h6 style="color: #070d0d">
+                Multi-instance Object Control
+              </h6>
+  
+              <div class="row">
+                <div class="col">
+                <p>Object Movements</p>
+                </div>
+                <div class="col">
+                <video src="gallery/vis_hint/5a451c418c8ff6dff52b7309bbe87244_ref_Still_12580_hint2_flow.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/vis_hint/5a451c418c8ff6dff52b7309bbe87244_ref_Still_12580_hint3_flow.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/vis_hint/5a451c418c8ff6dff52b7309bbe87244_ref_Still_12580_hint5_flow.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/vis_hint/5a451c418c8ff6dff52b7309bbe87244_ref_Still_12580_hint_many9_flow.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+              </div>
+              
+              <p>Reference Image</p>
+              <div class="row">
+                <div class="col">
+                <img src="gallery/refs/5a451c418c8ff6dff52b7309bbe87244_ref.png" style="width:100%"></img>
+                </div>
+                <div class="col">
+                <video src="gallery/object-only/5a451c418c8ff6dff52b7309bbe87244_Still_12580_gen_2.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/object-only/5a451c418c8ff6dff52b7309bbe87244_Still_12579_gen_3.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/object-only/5a451c418c8ff6dff52b7309bbe87244_Still_12595_gen_4.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/object-only/5a451c418c8ff6dff52b7309bbe87244_Still_12580_gen_many.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+              </div>
+
+              <br />
+              <br />
+              <br />
+              <br />
+
+              <h6 style="color: #070d0d">
+                Fine-grained Object Control
+              </h6>
+
+              <div class="row">
+                <div class="col">
+                <p>Object Movements</p>
+                </div>
+                <div class="col">
+                <video src="gallery/vis_hint/bamboo_ref_Still_12580_hint_flow.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/vis_hint/bamboo_ref_Still_12580_hint2_flow.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/vis_hint/bamboo_ref_Still_12580_hint3_flow.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/vis_hint/bamboo_ref_Still_12580_hint4_flow.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+              </div>
+              
+              <p>Reference Image</p>
+              <div class="row">
+                <div class="col">
+                <img src="gallery/refs/bamboo_ref.png" style="width:100%"></img>
+                </div>
+                <div class="col">
+                <video src="gallery/object-only/bamboo_Still_12583_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/object-only/bamboo_Still_12583_gen2.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/object-only/bamboo_Still_12580_gen3.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/object-only/bamboo_Still_12579_gen4.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+              </div>
+              
+  
+              <!-- <br />
+              <br />
+              <br />
+              <br />
+              <div class="row">
+                <div class="col">
+                <p>Object Movements</p>
+                </div>
+                <div class="col">
+                <video src="gallery/others/rendered_camera_trajectory.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/others/rendered_camera_trajectory.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/others/rendered_camera_trajectory.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/others/rendered_camera_trajectory.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+              </div>
+              
+              <p>Reference Image</p>
+              <div class="row">
+                <div class="col">
+                <img src="gallery/refs/hailuo_43160212_RF_ref.png" style="width:100%"></img>
+                </div>
+                <div class="col">
+                <video src="gallery/object-only/hailuo_43160212_RF_Still_12589_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/object-only/hailuo_43160212_RF_Still_12589_gen2.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/object-only/hailuo_43160212_RF_Still_12589_gen3.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/object-only/hailuo_43160212_RF_Still_12589_gen4.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+              </div>
+               -->
+  
+              <br />
+              <br />
+              <br />
+              <br />
+              <div class="content" id="collaborative">
+                  <h4>Collaborative Motion Control</h4>
+                  <h5 style="color: #8899a5">
+                      We control both camera and object motions, and visualize the perception process of 3D-aware motion representation.
+                  </h5>
+      
+                  <div class="row">
+                    <div class="col">
+                    <p>Camera & Object Movements</p>
+                    </div>
+                    <div class="col">
+                    <video src="gallery/vis_hint/7629fb6249e7759060906fb794897c3a_ref_TiltUp_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                    </div>
+                    <div class="col">
+                    <video src="gallery/vis_hint/7629fb6249e7759060906fb794897c3a_ref_TiltDown_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                    </div>
+                    <div class="col">
+                    <video src="gallery/vis_hint/7629fb6249e7759060906fb794897c3a_ref_TiltLeft_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                    </div>
+                    <div class="col">
+                    <video src="gallery/vis_hint/7629fb6249e7759060906fb794897c3a_ref_TiltRight_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                    </div>
+                  </div>
+                  
+                  <p>Reference Image</p>
+                  <div class="row">
+                    <div class="col">
+                    <img src="gallery/refs/7629fb6249e7759060906fb794897c3a_ref.png" style="width:100%"></img>
+                    </div>
+                    <div class="col">
+                    <video src="gallery/collaborative/7629fb6249e7759060906fb794897c3a_TiltUp_12593_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                    </div>
+                    <div class="col">
+                    <video src="gallery/collaborative/7629fb6249e7759060906fb794897c3a_TiltDown_12597_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                    </div>
+                    <div class="col">
+                    <video src="gallery/collaborative/7629fb6249e7759060906fb794897c3a_TiltLeft_12593_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                    </div>
+                    <div class="col">
+                    <video src="gallery/collaborative/7629fb6249e7759060906fb794897c3a_TiltRight_12580_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                    </div>
+                  </div>
+      
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <div class="row">
+                    <div class="col">
+                    <p>Camera & Object Movements</p>
+                    </div>
+                    <div class="col">
+                    <video src="gallery/vis_hint/bear_gitar2_ref_TiltUp_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                    </div>
+                    <div class="col">
+                    <video src="gallery/vis_hint/bear_gitar2_ref_TiltDown_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                    </div>
+                    <div class="col">
+                    <video src="gallery/vis_hint/bear_gitar2_ref_TiltLeft_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                    </div>
+                    <div class="col">
+                    <video src="gallery/vis_hint/bear_gitar2_ref_TiltRight_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                    </div>
+                  </div>
+                  
+                  <p>Reference Image</p>
+                  <div class="row">
+                    <div class="col">
+                    <img src="gallery/refs/bear_gitar2_ref.png" style="width:100%"></img>
+                    </div>
+                    <div class="col">
+                    <video src="gallery/collaborative/bear_gitar2_TiltUp_12580_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                    </div>
+                    <div class="col">
+                    <video src="gallery/collaborative/bear_gitar2_TiltDown_12580_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                    </div>
+                    <div class="col">
+                    <video src="gallery/collaborative/bear_gitar2_TiltLeft_1211_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                    </div>
+                    <div class="col">
+                    <video src="gallery/collaborative/bear_gitar2_TiltRight_12883_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                    </div>
+                  </div>
+            
+                  
+          </div>
+          </div>
+          </div>
+    </div>
+  </section>
+
+
+  <br />
+  <br />
+  <section id="cmp_sota">
+      <div class="container">
+          <div class="row">
+          <div class="col-12">
+          <h3>Comparison to State-of-the-arts</h3>
+          <hr style="margin-top: 0px" />
+          <h4>Camera Motion Control</h4>
+          <h5 style="color: #8899a5">
+              We compare Perception-as-Control to the state-of-the-art methods, CameraCtrl and MotionCtrl, in terms of camera motion control.
+          </h5>
+  
+              <div class="row">
+                  <div class="col">
+                  <p>Camera Movement</p>
+                  <video src="gallery/vis_camera/PanUp_vis_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <p>Point Cloud Reference</p>
+                  <video src="gallery/cmp_sota/building_panup_pointcloud_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <p>MotionCtrl</p>
+                  <video src="gallery/cmp_sota/building_panup_motionctrl_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <p>CameraCtrl</p>
+                  <video src="gallery/cmp_sota/building_panup_cameractrl.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <p>Ours</p>
+                  <video src="gallery/cmp_sota/building_panup_ours_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+              </div>
+              
+              <div class="row">
+                  <div class="col">
+                  <p>Camera Movement</p>
+                  <video src="gallery/vis_camera/SurroundDown_vis_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <p>Point Cloud Reference</p>
+                  <video src="gallery/cmp_sota/penguins_surrounddown_pointcloud_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <p>MotionCtrl</p>
+                  <video src="gallery/cmp_sota/penguins_surrounddown_motionctrl_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <p>CameraCtrl</p>
+                  <video src="gallery/cmp_sota/penguins_surrounddown_cameractrl_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <p>Ours</p>
+                  <video src="gallery/cmp_sota/penguins_surrounddown_ours_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                <p>Camera Movement</p>
+                <video src="gallery/vis_camera/0c9b371cc6225682_vis_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <p>Point Cloud Reference</p>
+                <video src="gallery/cmp_sota/blue_penguin_0c9b371cc6225682_pointcloud_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <p>MotionCtrl</p>
+                <video src="gallery/cmp_sota/blue_penguin_0c9b371cc6225682_motionctrl_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <p>CameraCtrl</p>
+                <video src="gallery/cmp_sota/blue_penguin_0c9b371cc6225682_cameractrl.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <p>Ours</p>
+                <video src="gallery/cmp_sota/blue_penguin_0c9b371cc6225682_ours_14.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+            </div>
+  
+
+          <h4>Object Motion Control & Collaborative motion control</h4>
+          <h5 style="color: #8899a5">
+              We compare Perception-as-Control to the state-of-the-art methods, Motion-I2V and MOFA-Video, in terms of object motion control and simple collaborative motion control.
+          </h5>
+  
+              <p>User Drags</p>
+              <div class="row">
+                <div class="col">
+                  <video src="gallery/vis_hint/global1_hint.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_hint/global2_hint.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_hint/cars_hint.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_hint/cross1_hint.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+                  <div class="col">
+                  <video src="gallery/vis_hint/ball_hint.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                  </div>
+              </div>
+              
+              <p>Motion-I2V</p>
+              <div class="row">
+                <div class="col">
+                <video src="gallery/cmp_sota/global1_motioni2v.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/global2_motioni2v.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/cars_motioni2v.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/cross1_motioni2v.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/ball_motioni2v.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+              </div>
+
+              
+              <p>MOFA-Video</p>
+              <div class="row">
+                <div class="col">
+                <video src="gallery/cmp_sota/global1_mofa.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/global2_mofa.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/cars_mofa.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/cross1_mofa.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/ball_mofa.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+              </div>
+
+              <p>Ours</p>
+              <div class="row">
+                <div class="col">
+                <video src="gallery/cmp_sota/global1_ours_interp_sample.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/global2_ours_interp_sample.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/cars_ours_interp_sample.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/cross1_ours_interp_sample.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/cmp_sota/ball_ours_interp_sample.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          </div>
+    </div>
+  </section>  
+    
+
+<br />
+<br />
+<section id="applications">
+    <div class="container">
+        <div class="row">
+        <div class="col-12">
+        <h3>Potential Applications</h3>
+        <hr style="margin-top: 0px" />
+
+      
+        <h6 style="color: #8899a5">
+          Illustration for motion-related applications.
+        </h6>
+        <div class="col">
+        <img src="img/application_definitions.png" style="width:100%"></img>
+        </div>
+        
+        <br />
+        <br />
+        <h4>Motion Generation</h4>
+        <h5 style="color: #8899a5">
+          Users draw 2D/3D trajectories on the reference image and create an animation based on them. We visualize how these trajectories change over time, using colors to represent the direction of movement.
+        </h5>
+
+            <p>User Drags</p>
+            <div class="row">
+                <div class="col">
+                <video src="gallery/vis_hint/panda_hug_hint.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/vis_hint/crazy7_hint.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/vis_hint/lion_mouth2_hint.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/vis_hint/flower_open3_hint.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/vis_hint/1_hint.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+            </div>
+            
+            <p>Animation Results</p>
+            <div class="row">
+                <div class="col">
+                <video src="gallery/object-only/panda_hug_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/object-only/crazy7_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/object-only/lion_mouth2_Still_12579_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/object-only/flower_open3_Still_12579_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+                <div class="col">
+                <video src="gallery/object-only/1_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+                </div>
+            </div>
+
+        </div>
+        </div>
+  </div>
+</section>
+
+
+
+<br />
+<br />
+<br />
+<br />
+<section>
+  <div class="container">
+      <h4>Motion Clone</h4>
+      <h5 style="color: #8899a5">
+          Mimic the entire motions in the source video.
+      </h5>
+      
+      <div class="content">
+        <p>Source Video</p>
+        <div class="row">
+            <div class="col">
+            <video src="gallery/applications/f1_1-Scene-009_driven.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <img src="gallery/others/edit_first_frame.png" style="width:100%"></img>
+            </div>
+            <div class="col">
+            <video src="gallery/applications/train_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <video src="gallery/applications/boat_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <video src="gallery/applications/boat_sea_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+        </div>
+
+        <p>Source Video</p>
+        <div class="row">
+            <div class="col">
+            <video src="gallery/applications/locomotive_driven.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <img src="gallery/others/edit_first_frame.png" style="width:100%"></img>
+            </div>
+            <div class="col">
+            <video src="gallery/applications/locomotive_edit2_gen2.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <video src="gallery/applications/train_driving_airplane_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <video src="gallery/applications/train_driving_motorbike_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+
+<br />
+<br />
+<br />
+<br />
+<section>
+  <div class="container">
+      <h4>Motion Transfer</h4>
+      <h5 style="color: #8899a5">
+        Transfer local motions from the source video to the reference image by relocating and rescaling local motions based on
+        semantic correspondence.
+      </h5>
+
+      <div class="content">
+        <p>First Frame</p>
+        <div class="row">
+            <div class="col">
+            <img src="gallery/others/vis_10018427_ref.png" style="width:100%"></img>
+            </div>
+            <div class="col">
+            <img src="gallery/others/find_correspondence.png" style="width:100%"></img>
+            </div>
+            <div class="col">
+            <img src="gallery/others/vis_10018427_gen4_ref.png" style="width:100%"></img>
+            </div>
+            <div class="col">
+            <img src="gallery/others/vis_10018427_gen3_ref_cam.png" style="width:100%"></img>
+            </div>
+            <div class="col">
+            <img src="gallery/others/vis_10018427_gen9_ref.png" style="width:100%"></img>
+            </div>
+        </div>
+
+        <p>Source Video</p>
+        <div class="row">
+            <div class="col">
+            <video src="gallery/applications/10018427_gen_ref_driven.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <img src="gallery/others/find_correspondence.png" style="width:100%"></img>
+            </div>
+            <div class="col">
+            <video src="gallery/applications/10018427_gen4_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <video src="gallery/applications/10018427_gen3_ref_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <video src="gallery/applications/10018427_gen9_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+        </div>
+
+      </div>
+  </div>
+</section>
+
+
+<br />
+<br />
+<br />
+<br />
+<section>
+  <div class="container">
+    <h4>Motion Editing</h4>
+    <h5 style="color: #8899a5">
+      Edit fine-grained scene and object motions in user-specified regions.
+    </h5>
+    
+    <div class="content">
+
+        <h6>
+            Freeze the motions <b style="color: #8899a5">outside</b> the segmentation mask.
+        </h6>
+        <div class="row">
+            <div class="col">
+            <p>Source Video</p>
+            <video src="gallery/applications/gold_fish_origin_driven.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <p>Segmentation Mask 1</p>
+            <img src="gallery/others/gold_fish_edit_1.png" style="width:100%"></img>
+            </div>
+            <div class="col">
+            <p>Segmentation Mask 2</p>
+            <img src="gallery/others/gold_fish_edit_6.png" style="width:100%"></img>
+            </div>
+            <div class="col">
+            <p>Segmentation Mask 3</p>
+            <img src="gallery/others/gold_fish_edit_7.png" style="width:100%"></img>
+            </div>
+            <div class="col">
+            <p>Segmentation Mask 4</p>
+            <img src="gallery/others/gold_fish_edit_5.png" style="width:100%"></img>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+            <p>   </p>
+            </div>
+            <div class="col">
+            <p>Edited Video 1</p>
+            <video src="gallery/applications/gold_fish_origin_gen1.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <p>Edited Video 2</p>   
+            <video src="gallery/applications/gold_fish_origin_gen6.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <p>Edited Video 3</p>
+            <video src="gallery/applications/gold_fish_origin_gen7.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <p>Edited Video 4</p>
+            <video src="gallery/applications/gold_fish_origin_gen5.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+        </div>
+        
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="content">
+        <h6>
+            Modify the motions <b style="color: #8899a5">outside</b> the segmentation mask.
+        </h6>
+
+        <div class="row">
+            <div class="col">
+            <p>Source Video</p>
+            <video src="gallery/applications/gold_fish_origin_driven.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <p>Segmentation Mask</p>
+            <img src="gallery/others/gold_fish_edit_5.png" style="width:100%"></img>
+            </div>
+            <div class="col">
+            <p>Camera Movements 1</p>
+            <video src="gallery/vis_camera/TiltLeft_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <p>Edited Video 1</p>
+            <video src="gallery/applications/gold_fish_origin_TiltLeft_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <p>Camera Movements 2</p>
+            <video src="gallery/vis_camera/TiltDown_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <p>Edited Video 2</p>
+            <video src="gallery/applications/gold_fish_origin_TiltDown_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+            <p>Source Video</p>
+            <video src="gallery/applications/f1_1-Scene-009_driven.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <p>Segmentation Mask</p>
+            <img src="gallery/others/f1_1-Scene-009_mask.png" style="width:100%"></img>
+            </div>
+            <div class="col">
+            <p>Camera Movements 1</p>
+            <video src="gallery/vis_camera/ZoomInZoomOut_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <p>Edited Video 1</p>
+            <video src="gallery/applications/f1_1-Scene-009_ZoomInZoomOut_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <p>Camera Movements 2</p>
+            <video src="gallery/vis_camera/TiltRight_vis.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <p>Edited Video 2</p>
+            <video src="gallery/applications/f1_1-Scene-009_TiltRight_gen.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+        </div>
+        
+    </div>
+
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="content">
+        <h6>
+            Modify the motions <b style="color: #8899a5">inside</b> the segmentation mask.
+        </h6>
+
+        <div class="row">
+            <div class="col">
+            <p>Source Video</p>
+            <video src="gallery/applications/gold_fish_origin_driven.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <p>Segmentation Mask</p>
+            <img src="gallery/others/gold_fish_edit_2.png" style="width:100%"></img>
+            </div>
+            <div class="col">
+            <p>Edited Video</p>
+            <video src="gallery/applications/gold_fish_origin_ZoomIn_gen_9.85.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+            <div class="col">
+            <p>Segmentation Mask</p>
+            <img src="gallery/others/gold_fish_edit_2.png" style="width:100%"></img>
+            </div>
+            <div class="col">
+            <p>Edited Video</p>
+            <video src="gallery/applications/gold_fish_origin_ZoomOut_gen_1.2.mp4" style="width:100%;" poster="img/spinner.svg" autoplay muted loop></video>
+            </div>
+        </div>
+        
+    </div>
+
+
+  </div>
+</section>
+
+<br />
+<br />
+<br />
+<br />
+<section id="demo_video">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Demo Video</h3>
+        <hr style="margin-top: 0px" />
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe style="clip-path: inset(1px 1px)" width="50%" height="50%"
+            src="https://www.youtube.com/embed/r2DszXAqbRE" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen=""></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- citing -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        </br>
+        </br>
+        <h3>Citation</h3>
+        <hr style="margin-top: 0px" />
+        <pre style="background-color: #e9eeef; padding: 1.5em 1.5em; border-radius: 20px">
+<code>
+  @article{chen2025perception,
+    title={Perception-as-Control: Fine-grained Controllable Image Animation with 3D-aware Motion Representation},
+    author={Chen, Yingjie and Men, Yifang and Yao, Yuan and Cui, Miaomiao and Liefeng, Bo},
+    booktitle={arXiv preprint arXiv:2501.05020},
+    year={2025}}
+</code></pre>
+        <hr />
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center" style="margin-bottom: 10px">
+    This project is intended solely for academic research and effect demonstration. 
+
+    Thanks to <a href="https://lioryariv.github.io/" target="_blank">Lior Yariv</a> for the website template.
+
+  </footer>
+  
+  
+  <section class="results-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h5>
+            <button aria-controls="renbody-results" aria-expanded="false" class="btn btn-primary" data-target="#renbody-results" data-toggle="collapse" id="renbody-results-button" type="button">
+            </button>
+          </h5>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="results-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+            <button aria-controls="mobilestage-results" aria-expanded="false" class="btn btn-primary" data-target="#mobilestage-results" data-toggle="collapse" id="mobilestage-results-button" type="button">
+            </button>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  <section class="results-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h5>
+            <button aria-controls="outdoor-results" aria-expanded="false" class="btn btn-primary" data-target="#outdoor-results" data-toggle="collapse" id="outdoor-results-button" type="button">
+            </button>
+          </h5>
+        </div>
+      </div>
+      <div class="collapse" id="outdoor-results">
+        <div class="col-md-12">
+          
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="results-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h5>
+            <button aria-controls="n3dv-results" aria-expanded="false" class="btn btn-primary" data-target="#n3dv-results" data-toggle="collapse" id="n3dv-results-button" type="button">
+            </button>
+          </h5>
+        </div>
+      </div>
+      
+      </div>
+    </div>
+  </section>
+  <section class="results-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h5>
+            <button aria-controls="nhr-results" aria-expanded="false" class="btn btn-primary" data-target="#nhr-results" data-toggle="collapse" id="nhr-results-button" type="button">
+            </button>
+          </h5>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  <section class="results-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h5>
+            <button aria-controls="zjumocap-results" aria-expanded="false" class="btn btn-primary" data-target="#zjumocap-results" data-toggle="collapse" id="zjumocap-results-button" type="button">
+            </button>
+          </h5>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  <section class="results-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h5>
+            <button aria-controls="mobilestage-single-results" aria-expanded="false" class="btn btn-primary" data-target="#mobilestage-single-results" data-toggle="collapse" id="mobilestage-single-results-button" type="button">
+            </button>
+          </h5>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  
+  <section class="results-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h5>
+            <button aria-controls="nhr-demos" aria-expanded="false" class="btn btn-primary" data-target="#nhr-demos" data-toggle="collapse" id="nhr-demos-button" type="button">
+            </button>
+          </h5>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  <section class="results-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h5>
+            <button aria-controls="zjumocap-demos" aria-expanded="false" class="btn btn-primary" data-target="#zjumocap-demos" data-toggle="collapse" id="zjumocap-demos-button" type="button">
+            </button>
+          </h5>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  <section class="results-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h5>
+            <button aria-controls="mobilestage-demos" aria-expanded="false" class="btn btn-primary" data-target="#mobilestage-demos" data-toggle="collapse" id="mobilestage-demos-button" type="button">
+            </button>
+          </h5>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  <section class="results-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h5>
+            <button aria-controls="n3dv-demos" aria-expanded="false" class="btn btn-primary" data-target="#n3dv-demos" data-toggle="collapse" id="n3dv-demos-button" type="button">
+            </button>
+          </h5>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <section class="results-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h5>
+            <button aria-controls="kplanes-comparisons" aria-expanded="false" class="btn btn-primary" data-target="#kplanes-comparisons" data-toggle="collapse" id="kplanes-comparisons-button" type="button">
+            </button>
+          </h5>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  <section class="results-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h5>
+            <button aria-controls="enerf-comparisons" aria-expanded="false" class="btn btn-primary" data-target="#enerf-comparisons" data-toggle="collapse" id="enerf-comparisons-button" type="button">
+            </button>
+          </h5>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+
+
+  <!-- Default Statcounter code for 4K4D: Real-Time 4D View
+Synthesi http://zju3dv.github.io/4k4d -->
+  <!-- <script type="text/javascript">
+    var sc_project = 12931644;
+    var sc_invisible = 1;
+    var sc_security = '012c8c76';
+  </script>
+  <script async="" src="https://www.statcounter.com/counter/counter.js" type="text/javascript"></script>
+  <noscript>
+    <div class="statcounter">
+      <a href="https://statcounter.com/" target="_blank" title="Web Analytics
+  Made Easy - Statcounter"><img alt="Web Analytics Made Easy - Statcounter" class="statcounter" referrerpolicy="no-referrer-when-downgrade" src="https://c.statcounter.com/12931644/0/012c8c76/1/" /></a>
+    </div>
+  </noscript> -->
+  <!-- End of Statcounter Code -->
+
+  <script>
+    var buttonIds = [
+      'mobilestage-results-button',
+      'outdoor-results-button',
+      'renbody-results-button',
+      'n3dv-results-button',
+      'nhr-results-button',
+      'zjumocap-results-button',
+      'mobilestage-single-results-button',
+
+      'nhr-demos-button',
+      'zjumocap-demos-button',
+      'mobilestage-demos-button',
+      'n3dv-demos-button',
+     /* ...other button ids... */];
+    var sectionIds = [
+      'mobilestage-results',
+      'outdoor-results',
+      'renbody-results',
+      'n3dv-results',
+      'nhr-results',
+      'zjumocap-results',
+      'mobilestage-single-results',
+
+      'nhr-demos',
+      'zjumocap-demos',
+      'mobilestage-demos',
+      'n3dv-demos',
+      /* ...other section ids... */];
+    for (var i = 0; i < buttonIds.length; i++) {
+      (function (index) {
+        var button = document.getElementById(buttonIds[index]);
+        var section = document.getElementById(sectionIds[index]);
+        button.addEventListener('click', function () {
+          if (section.classList.contains('show')) {
+            button.innerText = 'Click to Expand';
+            var videos = section.getElementsByTagName('video');
+            for (var j = 0; j < videos.length; j++) {
+              if (videos[j].readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+                videos[j].pause();
+              }
+            }
+          } else {
+            button.innerText = 'Click to Collapse';
+            var videos = section.getElementsByTagName('video');
+            for (var j = 0; j < videos.length; j++) {
+              videos[j].play();
+            }
+          }
+        });
+      })(i);
+    }
+
+    var compare_button_ids = [
+      'enerf-comparisons-button',
+      'kplanes-comparisons-button',
+     /* ...other button ids... */];
+    var compare_section_ids = [
+      'enerf-comparisons',
+      'kplanes-comparisons',
+      /* ...other section ids... */];
+    for (var i = 0; i < compare_button_ids.length; i++) {
+      (function (index) {
+        var button = document.getElementById(compare_button_ids[index]);
+        var section = document.getElementById(compare_section_ids[index]);
+        button.addEventListener('click', function () {
+          if (section.classList.contains('show')) {
+            button.innerText = 'Click to Expand';
+            var videos = section.getElementsByTagName('video');
+            for (var j = 0; j < videos.length; j++) {
+              if (videos[j].readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+                videos[j].pause();
+              }
+            }
+            var merge = $(document.getElementById(compare_section_ids[index]))[0].getElementsByTagName('canvas')[0];
+            if (merge.hasAttribute('animation_id')) {
+              cancelAnimationFrame(merge.getAttribute('animation_id'));
+            }
+          } else {
+            button.innerText = 'Click to Collapse';
+            var videos = section.getElementsByTagName('video');
+            for (var j = 0; j < videos.length; j++) {
+              videos[j].play();
+              // if (videos[j].readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+              // playVids(videos[j].id)
+              resizeAndPlay(videos[j])
+              // }
+            }
+          }
+        });
+      })(i);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      renderMathInElement(document.body, {
+        delimiters: [
+          { left: "$", right: "$", display: false },
+          { left: "$$", right: "$$", display: true }
+        ]
+      });
+    });
+
+
+
+    function handleCarouselSlide(event) {
+      // Reference to the current carousel
+      var currentCarousel = $(event.target);
+
+      // Check each video in the current carousel
+      currentCarousel.find('video').each(function () {
+        var isVideoInActiveItem = $(this).closest('.carousel-item').hasClass('active');
+        if (isVideoInActiveItem) {
+          if (this.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+            this.height = (this.videoHeight / this.videoWidth) * $(this).parent().width();
+          }
+          this.play();
+        } else {
+          if (this.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+            this.pause();
+          }
+        }
+      });
+    }
+
+    $('.carousel').on('slid.bs.carousel', handleCarouselSlide);
+
+    $(document).ready(function () {
+      $('video').each(function () {
+        var $video = $(this);
+        var $carousel = $video.closest('.carousel');
+        if ($carousel.length > 0) {
+          $video.on('ended', function () {
+            $carousel.carousel('next');
+          });
+        }
+      });
+    });
+
+    function update_video_shape() {
+      this.height = (this.videoHeight / this.videoWidth) * $(this).parent().width();
+    }
+
+    // fix the element's width and height properties to the current video ones
+    $("video").each(function () {
+      if (!this.classList.contains('comparison-video')) {
+        $(this).on('loadeddata', update_video_shape);
+      }
+    });
+
+    // $("#renbody-results-button").click()
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Get all videos
+      var videos = document.querySelectorAll('video');
+
+      // Add source to video tag
+      function addSourceToVideo(element, src) {
+        var source = document.createElement('source');
+        source.src = src;
+        source.type = 'video/mp4';
+        element.appendChild(source);
+      }
+
+      // Determine screen size and select appropriate videos
+      function whichSizeVideo(element) {
+        var windowWidth = window.innerWidth || window.innerWidth;
+        var prefix = windowWidth > 1200 ? "desktop" : "mobile";
+
+        // Get all data attributes for the given prefix (e.g., data-mobile-vid1, data-mobile-vid2, ...)
+        var i = 1;
+        while (element.dataset[prefix + "Vid" + i]) {
+          addSourceToVideo(element, element.dataset[prefix + "Vid" + i]);
+          i++;
+        }
+      }
+
+      // Initialize only if the page has videos
+      function videoSize() {
+        if (videos) {
+          videos.forEach(whichSizeVideo);
+        }
+      }
+
+      videoSize();
+
+      setInterval(function () {
+        // 选择所有comparison-video类型的视频
+        let videos = document.querySelectorAll('.comparison-video');
+
+        videos.forEach(video => {
+          // 如果id没有以After结尾
+          if (!video.id.endsWith('After')) {
+            resizeAndPlay(video);
+          }
+        });
+      }, 10000);  // 每500毫秒检测一次
+
+    });
+  </script>
+</body>
+
+</html>
