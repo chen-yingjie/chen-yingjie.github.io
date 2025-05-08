@@ -145,8 +145,8 @@ We are now recruiting for Summer Internships, and positions for Research Interns
 
 # 💻 Work Experiences
 - *2024.7 - Present*, AI Reasercher at Alibaba TongYi Lab. 
-- *2023.7 - 2023.10*, Reasercher Intern at Tencent.
-- *2023.2 - 2023.6*, Reasercher Intern at Apple Inc..
-- *2021.5 - 2022.7*, Reasercher Intern at Alibaba Damo Academy.
-- *2020.11 - 2021.2*, Reasercher Intern at SenseTime.
-- *2018.8 - 2019.2*, Reasercher Intern at MSRA.
+- *2023.7 - 2023.10*, Research Intern at Tencent.
+- *2023.2 - 2023.6*, Research Intern at Apple Inc..
+- *2021.5 - 2022.7*, Research Intern at Alibaba Damo Academy.
+- *2020.11 - 2021.2*, Research Intern at SenseTime.
+- *2018.8 - 2019.2*, Research Intern at MSRA.
