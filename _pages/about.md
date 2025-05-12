@@ -24,7 +24,7 @@ We are now recruiting for Summer Internships, and positions for Research Interns
 
 # 🔥 News
 - *2025.01*: &nbsp;🎉 Perception-as-Control has been released.
-- *2023.12*: &nbsp;🎉 Trend-Aware-Supervision has been accepted by AAAI 2024.
+- *2024.12*: &nbsp;🎉 Trend-Aware-Supervision has been accepted by AAAI 2024.
 - *2023.10*: &nbsp;🎉 EventFormer has been accepted by BMVC 2023.
 - *2023.05*: &nbsp;🎉 One paper has been accepted by SMC 2023.
 - *2022.12*: &nbsp;🎉 CIS has been accepted by AAAI 2022.
