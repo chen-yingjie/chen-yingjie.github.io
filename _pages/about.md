@@ -17,7 +17,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-I am Yingjie Chen, an AI Researcher at Alibaba TongYi Lab. I graduated with Ph.D. degree in the school of Computer Science from <a href="https://english.pku.edu.cn/">Peking University</a> in 2024, supervised by Prof. Tao Wang and Prof. Yun Liang. Before that, I received B.S. degree from <a href="https://english.pku.edu.cn/">Peking University</a> in 2019. My research focuses on Computer Vision, Affective Computing and  AI Generative Content. At Alibaba, I'm working on generative AI models, especially cotrollable video generation.
+I am Yingjie Chen, an AI Researcher at Alibaba TongYi Lab. I graduated with Ph.D. degree from the school of Computer Science, <a href="https://english.pku.edu.cn/">Peking University</a> in 2024, supervised by Prof. Tao Wang and Prof. Yun Liang. Before that, I received B.S. degree from <a href="https://english.pku.edu.cn/">Peking University</a> in 2019. My research focuses on Computer Vision, Affective Computing and  AI Generative Content. At Alibaba, I'm working on generative AI models, especially cotrollable video generation.
 
 We are now recruiting for Summer Internships, and positions for Research Interns (RI) are continuously open for applications. Welcome to contact me with your CV and research statement!
                 
