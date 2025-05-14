@@ -116,7 +116,7 @@ We are now recruiting for Summer Internships, and positions for Research Interns
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">RA-L, 2021</div><img src='images/pubs/fsnet_motivation.jpg' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">RA-L 2021</div><img src='images/pubs/fsnet_motivation.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Cross-Modal Representation Learning for Lightweight and Accurate Facial Action Unit Detection](hhttps://ieeexplore.ieee.org/document/9495228)
