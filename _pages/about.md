@@ -64,7 +64,7 @@ We are now recruiting for Summer Internships, and positions for Research Interns
 </div> 
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ECCV 2022</div><img src='images/pubs/faceclustering_overview.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ECCV 2022, Oral</div><img src='images/pubs/faceclustering_overview.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [On Mitigating Hard Clusters for Face Clustering](https://arxiv.org/pdf/2207.11895.pdf)
@@ -90,7 +90,7 @@ We are now recruiting for Summer Internships, and positions for Research Interns
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">AAAI 2022</div><img src='images/pubs/cis_overview.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">AAAI 2022, Oral</div><img src='images/pubs/cis_overview.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Causal Intervention for Subject-Deconfounded Facial Action Unit Recognition](https://arxiv.org/abs/2204.07935.pdf)
@@ -103,7 +103,7 @@ We are now recruiting for Summer Internships, and positions for Research Interns
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ACM MM 2021</div><img src='images/pubs/cafgraph_motivation.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ACM MM 2021, Oral</div><img src='images/pubs/cafgraph_motivation.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [CaFGraph: Context-aware Facial Multi-graph Representation for Facial Action Unit Recognition](https://dl.acm.org/doi/abs/10.1145/3474085.3475295)
