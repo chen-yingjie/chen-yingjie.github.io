@@ -23,7 +23,7 @@ We are now recruiting for Summer Internships, and positions for Research Interns
                 
 
 # 🔥 News
-- *2025.01*: &nbsp;🎉 Perception-as-Control has been released.
+- *2025.06*: &nbsp;🎉 Perception-as-Control has been accepted by ICCV 2025.
 - *2024.12*: &nbsp;🎉 Trend-Aware-Supervision has been accepted by AAAI 2024.
 - *2023.10*: &nbsp;🎉 EventFormer has been accepted by BMVC 2023.
 - *2023.05*: &nbsp;🎉 One paper has been accepted by SMC 2023.
@@ -37,7 +37,7 @@ We are now recruiting for Summer Internships, and positions for Research Interns
 
 # 📝 Selected Publications 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">arXiv 2025</div><img src='images/pubs/motion_generation.gif' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICCV 2025</div><img src='images/pubs/motion_generation.gif' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Perception-as-Control: Fine-grained Controllable Image Animation with 3D-aware Motion Representation](https://arxiv.org/pdf/2501.05020.pdf)
