@@ -23,22 +23,22 @@ We are now recruiting for Summer Internships, and positions for Research Interns
                 
 
 # 🔥 News
-- *2026.03*: &nbsp;🎉 We release the technical report and codes of Identity-as-Presence.
-- *2025.06*: &nbsp;🎉 Perception-as-Control has been accepted by ICCV 2025.
-- *2024.12*: &nbsp;🎉 Trend-Aware-Supervision has been accepted by AAAI 2024.
-- *2023.10*: &nbsp;🎉 EventFormer has been accepted by BMVC 2023.
-- *2023.05*: &nbsp;🎉 One paper has been accepted by SMC 2023.
-- *2022.12*: &nbsp;🎉 CIS has been accepted by AAAI 2022.
-- *2022.07*: &nbsp;🎉 On-Mitigating-Hard-Clusters has been accepted by ECCV 2022.
-- *2022.07*: &nbsp;🎉 SupHCL has been accepted by ACM MM 2022.
-- *2022.04*: &nbsp;🎉 HUMAN has been accepted by IJCAI 2022.
-- *2021.07*: &nbsp;🎉 CaFGraph has been accepted by ACM MM 2021.
-- *2021.07*: &nbsp;🎉 FSNet has been accepted by RA-L, 2021.
-- *2021.07*: &nbsp;🎉 AUPro has been accepted by ICONIP, 2021.
+- *2026.03*: We release the technical report and codes of Identity-as-Presence.
+- *2025.06*: Perception-as-Control has been accepted by ICCV 2025.
+- *2024.12*: Trend-Aware-Supervision has been accepted by AAAI 2024.
+- *2023.10*: EventFormer has been accepted by BMVC 2023.
+- *2023.05*: One paper has been accepted by SMC 2023.
+- *2022.12*: CIS has been accepted by AAAI 2022.
+- *2022.07*: On-Mitigating-Hard-Clusters has been accepted by ECCV 2022.
+- *2022.07*: SupHCL has been accepted by ACM MM 2022.
+- *2022.04*: HUMAN has been accepted by IJCAI 2022.
+- *2021.07*: CaFGraph has been accepted by ACM MM 2021.
+- *2021.07*: FSNet has been accepted by RA-L, 2021.
+- *2021.07*: AUPro has been accepted by ICONIP, 2021.
 
 # 📝 Selected Publications 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICCV 2025</div><img src='images/pubs/framework.pdf' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Arxiv 2026</div><img src='images/pubs/framework.pdf' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Identity as Presence: Towards Appearance and Voice Personalized Joint Audio-Video Generation](https://arxiv.org/pdf/2603.17889.pdf)
@@ -94,6 +94,7 @@ We are now recruiting for Summer Internships, and positions for Research Interns
 </div>
 </div>
 
+
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">ACM MM 2022</div><img src='images/pubs/suphcl_motivation.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
@@ -106,6 +107,7 @@ We are now recruiting for Summer Internships, and positions for Research Interns
 - We observe that there are three kinds of inherent relations among AUs, which can be treated as strong prior knowledge, and pursuing the consistency of such knowledge is the key to learning subject-consistent representations. To this end, we propose a supervised hierarchical contrastive learning method (SupHCL) for AU recognition to pursue knowledge consistency among different facial images and different AUs. 
 </div>
 </div>
+
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">AAAI 2022, Oral</div><img src='images/pubs/cis_overview.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
@@ -120,6 +122,7 @@ We are now recruiting for Summer Internships, and positions for Research Interns
 </div>
 </div>
 
+
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">ACM MM 2021, Oral</div><img src='images/pubs/cafgraph_motivation.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
@@ -133,6 +136,7 @@ We are now recruiting for Summer Internships, and positions for Research Interns
 </div>
 </div>
 
+
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">RA-L 2021</div><img src='images/pubs/fsnet_motivation.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
@@ -145,6 +149,7 @@ We are now recruiting for Summer Internships, and positions for Research Interns
 - The dynamic process of facial muscle movement, as the core feature of AU, is yet ignored and rarely exploited by prior studies. Based on such observation, we propose Flow Supervised Module (FSM) to explicitly capture the dynamic facial movement in the form of Flow and use the learned Flow to provide supervision signals for the detection model during the training stage effectively and efficiently.
 </div>
 </div>
+
 
 # 🎖 Honors and Awards
 - UBIQuant Scholarship, PKU, 2023
