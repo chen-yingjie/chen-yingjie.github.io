@@ -17,12 +17,13 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-I am Yingjie Chen, an AI Researcher at WeChat Vision Center. I graduated with Ph.D. degree from the school of Computer Science, <a href="https://english.pku.edu.cn/">Peking University</a> in 2024, supervised by Prof. Tao Wang and Prof. Yun Liang. Before that, I received B.S. degree from <a href="https://english.pku.edu.cn/">Peking University</a> in 2019. My research focuses on Computer Vision, Affective Computing and Generative AI. At WeChat, I'm working on generative AI models, especially cotrollable and personalized audio-video generation.
+I am Yingjie Chen, an AI Researcher at WeChat Vision Center. I graduated with Ph.D. degree from the school of Computer Science, <a href="https://english.pku.edu.cn/">Peking University</a> in 2024, supervised by Prof. Tao Wang and Prof. Yun Liang. Before that, I received B.S. degree from <a href="https://english.pku.edu.cn/">Peking University</a> in 2019. My research focuses on Computer Vision, Affective Computing and Generative AI. Now, I'm working on generative AI models, especially cotrollable and personalized video generation.
 
 We are now recruiting for Summer Internships, and positions for Research Interns (RI) are continuously open for applications. Welcome to contact me with your CV and research statement!
                 
 
 # 🔥 News
+- *2026.03*: We release the technical report and codes of Identity-as-Presence.
 - *2025.06*: &nbsp;🎉 Perception-as-Control has been accepted by ICCV 2025.
 - *2024.12*: &nbsp;🎉 Trend-Aware-Supervision has been accepted by AAAI 2024.
 - *2023.10*: &nbsp;🎉 EventFormer has been accepted by BMVC 2023.
@@ -37,23 +38,23 @@ We are now recruiting for Summer Internships, and positions for Research Interns
 
 # 📝 Selected Publications 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICCV 2025</div><img src='images/pubs/motion_generation.gif' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Arxiv 2026</div><img src='images/pubs/framework.pdf' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[Identity as Presence: Towards Appearance and Voice Personalized Joint Audio-Video Generation](https://arxiv.org/pdf/TBD.pdf)
+[Identity as Presence: Towards Appearance and Voice Personalized Joint Audio-Video Generation](https://arxiv.org/pdf/2603.17889.pdf)
 
 **Yingjie Chen**, Shilun Lin, Xing Cai, Qixin Yan, Wenjing Wang, Dingming Liu, Hao Liu, Chen Li, and Jing LYU
 
 [[Project Page]](https://chen-yingjie.github.io/projects/Identity-as-Presence/)
-[[Paper]](https://arxiv.org/pdf/TBD.pdf)
+[[Paper]](https://arxiv.org/pdf/2603.17889.pdf)
 [[Code]](https://github.com/WeChatCV/Identity-as-Presence.git)
 - We present a unified and scalable framework for identity-aware joint audio-video generation, Identity-as-Presence, to support single-subject and multi-subject personalized joint audio-video generation for both facial appearance and vocal timbre.
 </div>
 </div>
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">AAAI 2024</div><img src='images/pubs/trendaware_motivation_compressed.png' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1">
 
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICCV 2025</div><img src='images/pubs/motion_generation.gif' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
 
 [Perception-as-Control: Fine-grained Controllable Image Animation with 3D-aware Motion Representation](https://arxiv.org/pdf/2501.05020.pdf)
 
@@ -65,6 +66,7 @@ We are now recruiting for Summer Internships, and positions for Research Interns
 - We introduce 3D-aware motion representation and propose an image animation framework, Perception-as-Control, to achieve fine-grained collaborative motion control. By constructing 3D-aware motion representation based on various user intentions and taking the perception results as motion control signals, Perception-as-Control can be applied to various motion-related video synthesis tasks. 
 </div>
 </div>
+
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">AAAI 2024</div><img src='images/pubs/trendaware_motivation_compressed.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
@@ -159,9 +161,10 @@ We are now recruiting for Summer Internships, and positions for Research Interns
 - Scholarship of Tianchuang, 2016
 
 # 💻 Work Experiences
-- *2024.7 - Present*, AI Reasercher at Alibaba TongYi Lab. 
-- *2023.7 - 2023.10*, Research Intern at Tencent.
+- *2025.10 - Present*, AI Reasercher at WeChat Vision Center.
+- *2024.7 - 2025.10*, AI Reasercher at Alibaba TongYi Lab. 
+<!-- - *2023.7 - 2023.10*, Research Intern at Tencent. -->
 - *2023.2 - 2023.6*, Research Intern at Apple Inc..
 - *2021.5 - 2022.7*, Research Intern at Alibaba Damo Academy.
-- *2020.11 - 2021.2*, Research Intern at SenseTime.
+<!-- - *2020.11 - 2021.2*, Research Intern at SenseTime. -->
 - *2018.8 - 2019.2*, Research Intern at MSRA.
