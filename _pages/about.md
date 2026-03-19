@@ -23,6 +23,7 @@ We are now recruiting for Summer Internships, and positions for Research Interns
                 
 
 # 🔥 News
+- *2026.03*: &nbsp;🎉 We release the technical report and codes of Identity-as-Presence.
 - *2025.06*: &nbsp;🎉 Perception-as-Control has been accepted by ICCV 2025.
 - *2024.12*: &nbsp;🎉 Trend-Aware-Supervision has been accepted by AAAI 2024.
 - *2023.10*: &nbsp;🎉 EventFormer has been accepted by BMVC 2023.
