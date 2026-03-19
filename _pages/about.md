@@ -38,9 +38,7 @@ We are now recruiting for Summer Internships, and positions for Research Interns
 
 # 📝 Selected Publications 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">Arxiv 2026</div>
-<video src="images/pubs/framework.pdf" style="width:100%;" poster="images/img/spinner.svg" autoplay muted loop controls></video>
-</div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICCV 2025</div><img src='images/pubs/framework.pdf' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Identity as Presence: Towards Appearance and Voice Personalized Joint Audio-Video Generation](https://arxiv.org/pdf/2603.17889.pdf)
@@ -53,6 +51,7 @@ We are now recruiting for Summer Internships, and positions for Research Interns
 - We present a unified and scalable framework for identity-aware joint audio-video generation, Identity-as-Presence, to support single-subject and multi-subject personalized joint audio-video generation for both facial appearance and vocal timbre.
 </div>
 </div>
+
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICCV 2025</div><img src='images/pubs/motion_generation.gif' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
@@ -67,6 +66,7 @@ We are now recruiting for Summer Internships, and positions for Research Interns
 - We introduce 3D-aware motion representation and propose an image animation framework, Perception-as-Control, to achieve fine-grained collaborative motion control. By constructing 3D-aware motion representation based on various user intentions and taking the perception results as motion control signals, Perception-as-Control can be applied to various motion-related video synthesis tasks. 
 </div>
 </div>
+
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">AAAI 2024</div><img src='images/pubs/trendaware_motivation_compressed.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
