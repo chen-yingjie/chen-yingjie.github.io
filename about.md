@@ -161,7 +161,7 @@ We are now recruiting for Summer Internships, and positions for Research Interns
 - Scholarship of Tianchuang, 2016
 
 # 💻 Work Experiences
-- *2025.10 - Present*, AI Reasercher at WeChat Vision Center.
+- *2025.11 - Present*, AI Reasercher at WeChat Vision Center.
 - *2024.7 - 2025.10*, AI Reasercher at Alibaba TongYi Lab. 
 <!-- - *2023.7 - 2023.10*, Research Intern at Tencent. -->
 - *2023.2 - 2023.6*, Research Intern at Apple Inc..
